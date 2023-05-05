@@ -15,10 +15,10 @@
 
 	<form action="gestione-prodotti" method="POST" enctype="multipart/form-data" style="display:flex;flex-direction:column;">
 		<label for="nome">Nome</label>
-		<input type="text" id="nome" name="nome" />
+		<input type="text" id="nome" name="nome" required/>
 		
 		<label for="descrizione">Descrizione</label>
-		<input type="text" id="descrizione" name="descrizione" />
+		<input type="text" id="descrizione" name="descrizione" required/>
 		
 		<label for="tipo">Tipo:</label>
 		<select name="tipo" id="tipo">
@@ -31,13 +31,13 @@
 		</select>
 		
 		<label for="prezzo">Prezzo</label>
-		<input type="text" id="prezzo" name="prezzo" />
+		<input type="text" id="prezzo" name="prezzo" required />
 		
 		<label for="quantita">Quantità</label>
-		<input type="text" id="quantita" name="quantita" />
+		<input type="text" id="quantita" name="quantita" required />
 		
 		<label for="immagine">Immagine</label>
-		<input type="file" id="immagine" name="immagine" />
+		<input type="file" id="immagine" name="immagine" required />
 		
 		<input type="submit" value="INVIA" />
 	</form>
