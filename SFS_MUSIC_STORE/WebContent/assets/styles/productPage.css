@@ -1,0 +1,71 @@
+@charset "ISO-8859-1";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  scroll-behavior: smooth;
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  all: unset;
+}
+svg,
+path {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  background-color: black;
+  background-image: url("../images/sfondo-darker.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 82%;
+  min-height: 100svh;
+}
+
+section {
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+p{
+	color: white;
+	font-family: "Kyiv Type Titling";
+	font-weight: bold;
+}
+.global{
+	display: flex;
+	gap: 20vw;
+	justify-content: space-between;
+}
+
+.basicText{
+	color: white;
+	font-family: "Kyiv Type Titling";
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.infoBox{
+	display: flex;
+	flex-direction: column;
+	column-gap: 20px;
+	
+}
+
+.buyButton{
+	width: 12vw;
+	height: 6vh;
+	background-color: green;
+	border: 2px; 
+	border-color: black;
+}
+
+

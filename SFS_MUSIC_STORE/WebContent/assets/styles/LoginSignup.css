@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: white;
+	scroll-behavior: smooth;
+	font-family: "Ubuntu", sans-serif;
+}
+
+a {
+	all: unset;
+	cursor: pointer;
+}
+
+body {
+	background-color: black;
+	background-image: url("../images/sfondo-darker.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 82%;
+	min-height: 100svh;
+}
+
+section {
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper {
+	background-color: #181717;
+	border-radius: 5px;
+	width: 40%;
+	margin: auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.wrapper form {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-width: 300px;
+	margin: auto;
+}
+
+.wrapper form input[type="email"], .wrapper form input[type="password"],
+	.wrapper form input[type="text"] {
+	border-radius: 5px;
+	border: 0;
+	height: 30px;
+	color: black;
+	padding: 0 10px;
+	margin: 8px 0;
+}
+
+.wrapper form input[type="submit"] {
+	color: black;
+	cursor: pointer;
+	margin: 10px 0;
+	height: 30px;
+	background: #3acd3b;
+	border: 0;
+	font-size: 18px;
+	border-radius: 3px;
+}
+
+.wrapper form input[type="submit"]:hover {
+	scale: 0.98;
+}
+
+.no-account {
+	display: block;
+	text-align: center;
+	margin: 15px auto auto auto;
+	padding-top: 10px;
+	max-width: 450px;
+	border-top: 1px solid white;
+}
+
+.no-account a {
+	text-decoration: underline;
+	display: block;
+}
+
+.errors-wrapper {
+	margin: 10px auto;
+	background-color: rgb(255, 206, 206);
+	border: 1px solid red;
+	padding: 10px;
+	border-radius: 10px;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.errors-wrapper span {
+	color: red;
+}
+
+.success-wrapper{
+	margin: 10px auto;
+	background-color: rgb(201, 255, 168);
+	border: 1px solid green;
+	padding: 10px;
+	border-radius: 10px;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.success-wrapper span {
+	color: green;
+}
+
+@media screen and (max-width: 768px) {
+	.wrapper {
+		width: 90%;
+	}
+	.wrapper form input {
+		width: 100%;
+	}
+	form {
+		width: 100%;
+	}
+}
