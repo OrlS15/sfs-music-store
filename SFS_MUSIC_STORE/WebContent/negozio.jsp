@@ -7,7 +7,7 @@
 //filtro condizioni
 String f_condizioni = request.getParameter("c");
 if (f_condizioni == null)
-	f_condizioni = "";
+	f_condizioni = "nuovo";
 
 //filtro categorie
 List<String> f_categorie;
@@ -239,7 +239,7 @@ query += "&cat=" + cat;
 						<div class="prodotto-title"><%=pb.getNome()%></div>
 						<div class="prezzo-prodotto">
 							<span><%=pb.getPrezzo()%>&euro;</span> <a
-								href="carrello?action=add&id=<%=pb.getId()%>"> <svg width="24"
+								href="carrello?action=add&id=<%=pb.getId()%>&redirect=negozio"> <svg width="24"
 									height="24" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
                     <path

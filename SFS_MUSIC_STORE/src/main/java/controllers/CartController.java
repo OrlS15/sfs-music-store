@@ -27,34 +27,41 @@ public class CartController extends HttpServlet {
 
 		String action = request.getParameter("action");
 		String id_str = request.getParameter("id");
+		String redirect = request.getParameter("redirect");
 
 		if (action != null && id_str != null) {
 			int id = Integer.parseInt(id_str);
 			ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
 
 			switch (action) {
-				case "add": {
-					try {
-						System.out.println("AGGIUNGO");
-						carrello.addProduct(productDao.getProductById(id));
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					break;
+			case "add": {
+				try {
+					System.out.println("AGGIUNGO");
+					carrello.addProduct(productDao.getProductById(id));
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				case "delete": {
-					try {
-						carrello.deleteProduct(productDao.getProductById(id));
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					break;
-				}
+				break;
 			}
+			case "delete": {
+				try {
+					carrello.deleteProduct(productDao.getProductById(id));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			}
+			}
+		}
+
+		if (redirect != null && redirect.equals("negozio")) {
+			response.sendRedirect("negozio.jsp");
+			return;
 		}
 
 		request.setAttribute("carrello", carrello);
 		request.getRequestDispatcher("/carrello.jsp").forward(request, response);
+		return;
 	}
 
 }

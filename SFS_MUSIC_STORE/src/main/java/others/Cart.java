@@ -29,7 +29,6 @@ public class Cart {
 				if (item.getQuantita() > 1) {
 					item.setQuantita(item.getQuantita() - 1);
 				} else {
-					// remove
 					items.removeIf((a) -> a.getProductBean().getId() == product.getId());
 				}
 				return;
@@ -39,5 +38,9 @@ public class Cart {
 
 	public List<CartItem> getProducts() {
 		return items;
+	}
+	
+	public int getItemsCount() {
+		return items.stream().mapToInt(i->i.getQuantita()).sum();
 	}
 }

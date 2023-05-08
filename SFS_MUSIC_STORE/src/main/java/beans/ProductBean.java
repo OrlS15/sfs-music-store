@@ -86,9 +86,4 @@ public class ProductBean implements Serializable {
 	public void setImmagineIS(InputStream immagineIS) {
 		this.immagineIS = immagineIS;
 	}
-
-	@Override
-	public String toString() {
-		return "ProductBean [id=" + id + ", quantita=" + quantita + "]";
-	}
 }
