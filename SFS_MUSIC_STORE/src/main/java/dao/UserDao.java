@@ -18,7 +18,6 @@ public class UserDao implements IUserDao {
 
 	public UserDao(DataSource ds) {
 		this.ds = ds;
-		System.out.println("Inizializzo UserDao...");
 	}
 
 	@Override

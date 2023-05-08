@@ -1,3 +1,4 @@
+<%@page import="beans.ProductBean"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -25,7 +26,40 @@ if (f_prezzo_min == null)
 if (f_prezzo_max == null)
 	f_prezzo_max = "";
 
-//filtro offerte
+//filtro ordinamento
+String ordina = request.getParameter("ordina");
+if(ordina == null)
+	ordina = "";
+
+//filtro search
+String search = request.getParameter("search");
+if(search == null)
+	search = "";
+System.out.println(search);
+
+//filtro page
+String pageNum_str = request.getParameter("page");
+int pageNum;
+if(pageNum_str == null)
+	pageNum = 1;
+else
+	pageNum = Integer.parseInt(pageNum_str);
+
+List<ProductBean> pbs = (List<ProductBean>) request.getAttribute("products");
+if (pbs == null) {
+	String query = "?c=" + f_condizioni + "&min_price=" + f_prezzo_min + "&max_price=" + f_prezzo_max + "&ordina=" + ordina+ "&page=" + pageNum;
+	if (f_cat != null)
+		for (String cat : f_cat)
+	query += "&cat=" + cat;
+	System.out.println(query);
+	response.sendRedirect("negozio" + query);
+	return;
+}
+
+String query = "?c=" + f_condizioni + "&min_price=" + f_prezzo_min + "&max_price=" + f_prezzo_max + "&ordina=" + ordina;
+if (f_cat != null)
+	for (String cat : f_cat)
+query += "&cat=" + cat;
 %>
 
 <!DOCTYPE html>
@@ -33,19 +67,16 @@ if (f_prezzo_max == null)
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet"
-	href="assets/styles/fonts.css" />
-<link rel="stylesheet"
-	href="assets/styles/negozio.css" />
-<script src="assets/js/negozio.js"
-	defer></script>
+<link rel="stylesheet" href="assets/styles/fonts.css" />
+<link rel="stylesheet" href="assets/styles/negozio.css" />
+<script src="assets/js/negozio.js" defer></script>
 <title>SFS Music Store - Negozio</title>
 </head>
 <body>
 	<jsp:include page="./includes/header.jsp"></jsp:include>
 	<section class="wrapper">
 		<div class="filtri">
-			<form action="./negozio.jsp">
+			<form action="negozio.jsp" method="GET">
 				<div class="filtro">
 					<p class="filtro-title">Condizioni</p>
 					<div class="filtro-content">
@@ -74,8 +105,9 @@ if (f_prezzo_max == null)
 						</div>
 						<div>
 							<input type="checkbox" id="categoria_bassi" name="cat"
-								value="basso" <%=f_categorie.contains("basso") ? "checked" : ""%> />
-							<label for="categoria_bassi">Bassi</label>
+								value="basso"
+								<%=f_categorie.contains("basso") ? "checked" : ""%> /> <label
+								for="categoria_bassi">Bassi</label>
 						</div>
 						<div>
 							<input type="checkbox" id="categoria_strumento-a-corde"
@@ -87,8 +119,8 @@ if (f_prezzo_max == null)
 						<div>
 							<input type="checkbox" id="categoria_pianoforti" name="cat"
 								value="pianoforte"
-								<%=f_categorie.contains("pianoforte") ? "checked" : ""%> />
-							<label for="categoria_pianoforti">Pianoforti</label>
+								<%=f_categorie.contains("pianoforte") ? "checked" : ""%> /> <label
+								for="categoria_pianoforti">Pianoforti</label>
 						</div>
 						<div>
 							<input type="checkbox" id="categoria_batterie" name="cat"
@@ -98,8 +130,9 @@ if (f_prezzo_max == null)
 						</div>
 						<div>
 							<input type="checkbox" id="categoria_fiati" name="cat"
-								value="fiato" <%=f_categorie.contains("fiato") ? "checked" : ""%> />
-							<label for="categoria_fiati">Fiati</label>
+								value="fiato"
+								<%=f_categorie.contains("fiato") ? "checked" : ""%> /> <label
+								for="categoria_fiati">Fiati</label>
 						</div>
 					</div>
 				</div>
@@ -118,6 +151,19 @@ if (f_prezzo_max == null)
 						</div>
 					</div>
 				</div>
+				
+				<div class="filtro">
+					<p class="filtro-title">Ordina</p>
+					<div class="filtro-content">
+						<div class="ordinaper">
+							<select name="ordina" id="ordina">
+								<option value="" <%=ordina.equals("")?"selected":"" %>></option>
+								<option value="prezzo_asc" <%=ordina.equals("prezzo_asc")?"selected":"" %>>Prezzo crescente</option>
+								<option value="prezzo_desc" <%=ordina.equals("prezzo_desc")?"selected":"" %>>Prezzo descrescente</option>
+							</select>
+						</div>
+					</div>
+				</div>
 
 				<button type="submit">APPLICA</button>
 			</form>
@@ -125,12 +171,12 @@ if (f_prezzo_max == null)
 
 		<div class="risultati">
 			<div class="risultati-header">
-				<h2>Risultati</h2>
+				<!-- <h2>Risultati</h2>  -->
 				<span class="separator"></span>
 				<div class="searchbar" id="searchbar">
 					<form action="" autocomplete="off">
 						<input type="text" name="search" placeholder="Cerca..."
-							autocomplete="off" />
+							autocomplete="off" <%=!search.isBlank() ? "value=" + search :"" %> />
 					</form>
 					<!-- search icon -->
 					<svg width="23" height="23" viewBox="0 0 23 23" fill="none"
@@ -155,43 +201,45 @@ if (f_prezzo_max == null)
 							d="M25.6222 4.83615H9.04583M6.03194 4.83615H1.51111M25.6222 19.9056H9.04583M6.03194 19.9056H1.51111M18.0875 12.3709H1.51111M25.6222 12.3709H21.1014M7.53889 1.82227C7.93855 1.82227 8.32185 1.98103 8.60446 2.26364C8.88706 2.54625 9.04583 2.92954 9.04583 3.32921V6.3431C9.04583 6.74277 8.88706 7.12606 8.60446 7.40867C8.32185 7.69128 7.93855 7.85004 7.53889 7.85004C7.13922 7.85004 6.75592 7.69128 6.47332 7.40867C6.19071 7.12606 6.03194 6.74277 6.03194 6.3431V3.32921C6.03194 2.92954 6.19071 2.54625 6.47332 2.26364C6.75592 1.98103 7.13922 1.82227 7.53889 1.82227ZM7.53889 16.8917C7.93855 16.8917 8.32185 17.0505 8.60446 17.3331C8.88706 17.6157 9.04583 17.999 9.04583 18.3987V21.4125C9.04583 21.8122 8.88706 22.1955 8.60446 22.4781C8.32185 22.7607 7.93855 22.9195 7.53889 22.9195C7.13922 22.9195 6.75592 22.7607 6.47332 22.4781C6.19071 22.1955 6.03194 21.8122 6.03194 21.4125V18.3987C6.03194 17.999 6.19071 17.6157 6.47332 17.3331C6.75592 17.0505 7.13922 16.8917 7.53889 16.8917ZM19.5944 9.35699C19.9941 9.35699 20.3774 9.51575 20.66 9.79836C20.9426 10.081 21.1014 10.4643 21.1014 10.8639V13.8778C21.1014 14.2775 20.9426 14.6608 20.66 14.9434C20.3774 15.226 19.9941 15.3848 19.5944 15.3848C19.1948 15.3848 18.8115 15.226 18.5289 14.9434C18.2463 14.6608 18.0875 14.2775 18.0875 13.8778V10.8639C18.0875 10.4643 18.2463 10.081 18.5289 9.79836C18.8115 9.51575 19.1948 9.35699 19.5944 9.35699Z"
 							stroke="black" stroke-width="2" stroke-linecap="round"
 							stroke-linejoin="round" />
-            </svg>
-				</div>
-				<div class="ordinaper">
-					<select name="ordina" id="ordina">
-						<option value="prezzo_asc">Prezzo crescente</option>
-						<option value="prezzo_desc">Prezzo descrescente</option>
-					</select>
-				</div>
+            </svg>				</div>
+
 			</div>
 			<div class="risultati-content">
+				<%
+				if (pbs != null)
+					for (ProductBean pb : pbs) {
+				%>
 				<div class="card-prodotto">
 					<div class="image-prodotto">
-						<img src="/image.png" alt="immagine" />
+						<a class="link-img-prodotto"
+							href="pagina-prodotto?id=<%=pb.getId()%>"> <img
+							src="getImage?id=<%=pb.getId()%>" alt="immagine" />
+						</a>
 					</div>
 					<div class="info-prodotto">
-						<div class="warehouse">
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+						<div class="warehouse" <%=pb.getCondizione().equals("nuovo")?"style=\"visibility: hidden\"" : "" %> >
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none"	
 								xmlns="http://www.w3.org/2000/svg"
 								xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <rect width="13.3333" height="13.2692"
-									fill="url(#pattern0)" />
-                  <defs>
-                    <pattern id="pattern0"
-									patternContentUnits="objectBoundingBox" width="1" height="1">
-                      <use xlink:href="#image0_90_201"
-									transform="matrix(0.00195312 0 0 0.00196256 0 -0.00241544)" />
-                    </pattern>
-                    <image id="image0_90_201" width="512" height="512"
-									xlink:href="data:image/png;base64,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" />
-                  </defs>
-                </svg>
+				                  <rect width="13.3333" height="13.2692"
+													fill="url(#pattern0)" />
+				                  <defs>
+				                    <pattern id="pattern0"
+													patternContentUnits="objectBoundingBox" width="1" height="1">
+				                      <use xlink:href="#image0_90_201"
+													transform="matrix(0.00195312 0 0 0.00196256 0 -0.00241544)" />
+				                    </pattern>
+				                    <image id="image0_90_201" width="512" height="512"
+													xlink:href="data:image/png;base64,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" />
+				                  </defs>
+				              </svg>
 							<p>Warehouse</p>
 						</div>
-						<div class="prodotto-title">Chitarra Gibson Les Paul '59
-							Green</div>
+
+						<div class="prodotto-title"><%=pb.getNome()%></div>
 						<div class="prezzo-prodotto">
-							<span>450.00&euro;</span> <a href="/"> <svg width="24"
+							<span><%=pb.getPrezzo()%>&euro;</span> <a
+								href="carrello?action=add&id=<%=pb.getId()%>"> <svg width="24"
 									height="24" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -201,6 +249,17 @@ if (f_prezzo_max == null)
 							</a>
 						</div>
 					</div>
+				</div>
+				<%
+				}
+				%>
+			</div>
+			<div class="risultati-paging">
+				<div class="prev-page">
+					<a href="negozio<%=query %>&page=<%=pageNum<=1?1:pageNum-1 %>" <%=pageNum<=1?"data-disabled=true":"" %> >Pagina precedente</a>
+				</div>
+				<div class="next-page">
+					<a href="negozio<%=query %>&page=<%=pageNum+1 %>"  <%=pbs.size()<30?"data-disabled=true":"" %> >Pagina successiva</a>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-drop database sfsmusicstore;
+DROP DATABASE IF EXISTS sfsmusicstore;
 create database sfsmusicstore;
 use sfsmusicstore;
 
@@ -29,7 +29,7 @@ create table ORDINE(
 create table INFO_PRODOTTO(
 	id int auto_increment NOT NULL,
     nome varchar(50) NOT NULL,
-    descrizione varchar(50) NOT NULL,
+    descrizione text NOT NULL,
     tipo varchar(50) NOT NULL,
     immagine mediumblob NOT NULL,
     PRIMARY KEY(id)
@@ -49,7 +49,7 @@ create table PROD_IN_VENDITA(
 	id_info_prodotto int NOT NULL,
     prezzo double NOT NULL,
     quantita int NOT NULL,
-    condizione char NOT NULL default "n",
+    condizione varchar(9) NOT NULL default "nuovo",
     PRIMARY KEY(id_info_prodotto),
     FOREIGN KEY(id_info_prodotto) REFERENCES INFO_PRODOTTO(id)
 );

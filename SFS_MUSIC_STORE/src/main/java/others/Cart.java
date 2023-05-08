@@ -7,36 +7,37 @@ import beans.ProductBean;
 
 public class Cart {
 
-	private List<ProductBean> products;
+	private List<CartItem> items;
 
 	public Cart() {
-		products = new ArrayList<ProductBean>();
+		items = new ArrayList<>();
 	}
 
 	public void addProduct(ProductBean product) {
-		for (ProductBean prod : products) {
-			if (prod.getId() == product.getId()) {
-				prod.setQuantita(prod.getQuantita() + 1);
-				break;
+		for (CartItem item : items) {
+			if (item.getProductBean().getId() == product.getId()) {
+				item.setQuantita(item.getQuantita() + 1);
+				return;
 			}
 		}
-		products.add(product);
+		items.add(new CartItem(product, 1));
 	}
 
 	public void deleteProduct(ProductBean product) {
-		for (ProductBean prod : products) {
-			if (prod.getId() == product.getId()) {
-				if (prod.getQuantita() > 1) {
-					prod.setQuantita(prod.getQuantita() - 1);
+		for (CartItem item : items) {
+			if (item.getProductBean().getId() == product.getId()) {
+				if (item.getQuantita() > 1) {
+					item.setQuantita(item.getQuantita() - 1);
 				} else {
-					products.remove(prod);
+					// remove
+					items.removeIf((a) -> a.getProductBean().getId() == product.getId());
 				}
-				break;
+				return;
 			}
 		}
 	}
 
-	public List<ProductBean> getProducts() {
-		return products;
+	public List<CartItem> getProducts() {
+		return items;
 	}
 }

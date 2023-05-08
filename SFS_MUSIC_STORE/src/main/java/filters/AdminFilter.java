@@ -24,6 +24,7 @@ public class AdminFilter extends HttpFilter implements Filter {
 		Boolean isAdmin = (Boolean) req.getSession().getAttribute("isAdmin");
 		if (isAdmin == null || isAdmin == false) {
 			res.sendRedirect(req.getContextPath() + "/");
+			return;
 		}
 
 		chain.doFilter(request, response);

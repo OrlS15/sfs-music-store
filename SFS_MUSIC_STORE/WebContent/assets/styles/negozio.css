@@ -102,6 +102,11 @@ body {
   width: 100px;
   cursor: pointer;
 }
+
+#ordina,
+.ordinaper select option{
+	color: black;
+}
 /* <./filtri> */
 
 /* <.risultati> */
@@ -170,6 +175,7 @@ span.separator {
   padding: 10px;
   border-radius: 5px;
   color: black;
+  gap: 20px;
 }
 .image-prodotto {
   width: 130px;
@@ -188,10 +194,11 @@ span.separator {
   flex-direction: column;
   justify-content: space-around;
   gap: 10px;
+  width: 73%;
 }
 .prodotto-title {
   color: black;
-  text-align: center;
+  text-align: left;
   font-size: 17px;
 }
 .warehouse {
@@ -214,6 +221,11 @@ span.separator {
   justify-content: flex-end;
   gap: 15px;
 }
+
+.link-img-prodotto{
+	cursor: pointer;
+}
+
 .prezzo-prodotto span {
   color: black;
   font-size: 18px;
@@ -262,6 +274,35 @@ span.separator {
     flex-wrap: wrap;
     gap: 5px;
   }
+}
+
+.risultati-paging {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	flex-direction: row;
+	margin-top: 30px;
+	flex-wrap: wrap;
+}
+
+.risultati-paging div{
+	margin: auto;
+}
+
+.risultati-paging a{
+	color: black;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: #3acd3b;
+	padding: 10px;
+	border: 0;
+}
+
+.risultati-paging a[data-disabled=true] {
+	cursor: default;
+	background-color: gray;
+	pointer-events: none;
 }
 /* </.risultati> */
 

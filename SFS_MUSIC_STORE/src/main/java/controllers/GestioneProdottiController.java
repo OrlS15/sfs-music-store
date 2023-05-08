@@ -25,10 +25,39 @@ public class GestioneProdottiController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/admin/gestione-prodotti.jsp");
+		ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
+		try {
+			List<ProductBean> pbs = productDao.getAllProducts(9999999, 0);
+			request.setAttribute("products", pbs);
+			request.getRequestDispatcher("/admin/gestione-prodotti.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		
+		switch(action) {
+			case "add": {
+				addProduct(request,response);
+				break;
+			}
+			case "edit":{
+				editProduct(request,response);
+				break;
+			}
+			case "delete":{
+				deleteProduct(request,response);
+				break;
+			}
+		}
+		
+		doGet(request,response);
+	}
+	
+	private void addProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String descrizione = request.getParameter("descrizione");
@@ -81,12 +110,68 @@ public class GestioneProdottiController extends HttpServlet {
 		pb.setPrezzo(Double.parseDouble(prezzo));
 		pb.setQuantita(Integer.parseInt(quantita));
 		pb.setImmagineIS(immagine);
-		pb.setCondizione("n");
+		pb.setCondizione("nuovo");
 		try {
 			productDao.doSave(pb);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	private void editProduct(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String prezzo = request.getParameter("prezzo");
+		String quantita = request.getParameter("quantita");
+		List<String> errors = new ArrayList<>();
+
+		// errors handling
+		if (id == null || id.trim().isEmpty()) {
+			errors.add("Il campo id non può essere vuoto!");
+		}
+		if (prezzo == null || prezzo.trim().isEmpty()) {
+			errors.add("Il prezzo prezzo non può essere vuoto!");
+		}
+
+		if (!errors.isEmpty()) {
+			request.setAttribute("errors", errors);
+			request.getRequestDispatcher("/admin/gestione-prodotti.jsp").forward(request, response);
+			return;
+		}
+		
+		ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
+		
+		try {
+			productDao.editProduct(Integer.parseInt(id), Double.parseDouble(prezzo), Integer.parseInt(quantita));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void deleteProduct(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String id = request.getParameter("id");
+		List<String> errors = new ArrayList<>();
+		
+		// errors handling
+		if (id == null || id.trim().isEmpty()) {
+			errors.add("Il campo id non può essere vuoto!");
+		}
+		
+		if (!errors.isEmpty()) {
+			request.setAttribute("errors", errors);
+			request.getRequestDispatcher("/admin/gestione-prodotti.jsp").forward(request, response);
+			return;
+		}
+		
+		ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
+		
+		try {
+			productDao.deleteProduct(Integer.parseInt(id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }

@@ -13,24 +13,24 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="assets/styles/header.css" />
-<script src="assets/js/header.js"
+	href="${pageContext.request.contextPath}/assets/styles/header.css" />
+<script src="${pageContext.request.contextPath}/assets/js/header.js"
 	defer></script>
 </head>
 <body>
 	<header>
 		<a href="./"> <span class="logo-wrapper"> <img
-				src="assets/images/logo.png" alt="logo" id="logo" />
+				src="${pageContext.request.contextPath}/assets/images/logo.png" alt="logo" id="logo" />
 				<p>SFS Music Store</p>
 		</span>
 		</a>
 
 		<nav class="navbar">
 			<ul>
-				<li><a href="./negozio.jsp?c=nuovo">NEGOZIO</a></li>
+				<li><a href="${pageContext.request.contextPath}/negozio.jsp?c=nuovo">NEGOZIO</a></li>
 			</ul>
 			<ul>
-				<li><a href="./negozio.jsp?c=warehouse">WAREHOUSE</a></li>
+				<li><a href="${pageContext.request.contextPath}/negozio.jsp?c=warehouse">WAREHOUSE</a></li>
 			</ul>
 		</nav>
 
@@ -44,16 +44,16 @@
 							<li><a href="account">I miei ordini</a></li>
 							<li><a href="account">Le mie vendite</a></li>
 							<% if(isAdmin==true){ %>
-							<li><a href="admin/richieste-vendita.jsp">RICHIESTE VENDITA</a></li>
-							<li><a href="admin/gestione-prodotti.jsp">GESTIONE PRODOTTI</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/richieste-vendita.jsp">RICHIESTE VENDITA</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/gestione-prodotti.jsp">GESTIONE PRODOTTI</a></li>
 							<% } %>
 						</ul>
 						<hr />
-						<span class="account-popup-logout"><a href="logout">Logout</a></span>
+						<span class="account-popup-logout"><a href="${pageContext.request.contextPath}/logout">Logout</a></span>
 					<% }else{ %>
 						<ul>
-							<li><a href="accedi.jsp">Accedi</a></li>
-							<li><a href="registrati.jsp">Registrati</a></li>
+							<li><a href="${pageContext.request.contextPath}/accedi.jsp">Accedi</a></li>
+							<li><a href="${pageContext.request.contextPath}/registrati.jsp">Registrati</a></li>
 						</ul>
 					<% } %>
 				</div>
@@ -65,7 +65,7 @@
 						fill="white" />
           </svg>
 			</div>
-			<a href="./negozio"> <!-- cart icon -->
+			<a href="${pageContext.request.contextPath}/carrello"> <!-- cart icon -->
 				<div>
 					<svg width="42" height="44" viewBox="0 0 42 44" fill="currentColor"
 						xmlns="http://www.w3.org/2000/svg">
@@ -103,10 +103,10 @@
 
 			<div class="hamburger-middle-content">
 				<div class="hamburger-middle-content-item">
-					<a href="./negozio.jsp?c=nuovo">NEGOZIO</a>
+					<a href="${pageContext.request.contextPath}/negozio.jsp?c=nuovo">NEGOZIO</a>
 				</div>
 				<div class="hamburger-middle-content-item">
-					<a href="./negozio.jsp?c=warehouse">WAREHOUSE</a>
+					<a href="${pageContext.request.contextPath}/negozio.jsp?c=warehouse">WAREHOUSE</a>
 				</div>
 			</div>
 		</div>

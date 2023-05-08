@@ -3,7 +3,7 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="assets/styles/footer.css" />
+	href="${pageContext.request.contextPath}/assets/styles/footer.css" />
 </head>
 <body>
 	<footer>
@@ -27,12 +27,12 @@
 		<div class="footer-row">
 			<p class="footer-row-title">CATEGORIE</p>
 			<p class="footer-row-description">
-				<a href="negozio.jsp?cat=basso">BASSI</a><br /> <br /> <a
-					href="negozio.jsp?cat=chitarra">CHITARRE</a><br /> <br /> <a
-					href="negozio.jsp?cat=strumento-a-corda">STRUMENTI A CORDA</a><br />
-				<br /> <a href="negozio.jsp?cat=batteria">BATTERIE</a><br /> <br />
-				<a href="negozio.jsp?cat=fiato">FIATI</a><br /> <br /> <a
-					href="negozio.jsp?cat=pianoforte">PIANOFORTI</a><br /> <br />
+				<a href="${pageContext.request.contextPath}/negozio.jsp?cat=basso">BASSI</a><br /> <br /> <a
+					href="${pageContext.request.contextPath}/negozio.jsp?cat=chitarra">CHITARRE</a><br /> <br /> <a
+					href="${pageContext.request.contextPath}/negozio.jsp?cat=strumento-a-corda">STRUMENTI A CORDA</a><br />
+				<br /> <a href="${pageContext.request.contextPath}/negozio.jsp?cat=batteria">BATTERIE</a><br /> <br />
+				<a href="${pageContext.request.contextPath}/negozio.jsp?cat=fiato">FIATI</a><br /> <br /> <a
+					href="${pageContext.request.contextPath}/negozio.jsp?cat=pianoforte">PIANOFORTI</a><br /> <br />
 			</p>
 		</div>
 	</footer>
