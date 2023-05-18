@@ -43,4 +43,8 @@ public class Cart {
 	public int getItemsCount() {
 		return items.stream().mapToInt(i->i.getQuantita()).sum();
 	}
+	
+	public double getTotale() {
+		return items.stream().mapToDouble(i->i.getProductBean().getPrezzo()*i.getQuantita()).sum();
+	}
 }

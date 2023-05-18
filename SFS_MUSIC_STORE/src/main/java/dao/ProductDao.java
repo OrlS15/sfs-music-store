@@ -12,10 +12,13 @@ import javax.sql.DataSource;
 
 import beans.ProductBean;
 import interfaces.IProductDao;
+import others.CartItem;
 
 public class ProductDao implements IProductDao {
 	private static final String TABLE_INFO_PRODOTTO = "info_prodotto";
 	private static final String TABLE_PROD_IN_VENDITA = "prod_in_vendita";
+	private static final String TABLE_ORDINE = "ordine";
+	private static final String TABLE_ORDER_ITEM = "order_item";
 	private DataSource ds = null;
 
 	public ProductDao(DataSource ds) {
@@ -207,18 +210,12 @@ public class ProductDao implements IProductDao {
 		Connection c = null;
 		PreparedStatement p = null;
 
-		String query1 = "DELETE FROM " + ProductDao.TABLE_PROD_IN_VENDITA + " WHERE id_info_prodotto = ?";
+		String query = "DELETE FROM " + ProductDao.TABLE_PROD_IN_VENDITA + " WHERE id_info_prodotto = ?";
 
-		String query2 = "DELETE FROM " + ProductDao.TABLE_INFO_PRODOTTO + " WHERE id = ?";
 		try {
 			c = ds.getConnection();
 
-			p = c.prepareStatement(query1);
-			p.setInt(1, id);
-			p.executeUpdate();
-			p.close();
-
-			p = c.prepareStatement(query2);
+			p = c.prepareStatement(query);
 			p.setInt(1, id);
 			p.executeUpdate();
 		} finally {
@@ -332,5 +329,70 @@ public class ProductDao implements IProductDao {
 			}
 		}
 		return pbs;
+	}
+
+	@Override
+	public void effettuaOrdine(List<CartItem> cis, int id_utente, String indirizzo) throws SQLException {
+		Connection c = null;
+		PreparedStatement p = null;
+
+		String query1 = 
+				"INSERT INTO " + ProductDao.TABLE_ORDINE + " (id_utente, indirizzo)"
+				+ " VALUES (?,?)";
+		String query2 = 
+				"INSERT INTO " + ProductDao.TABLE_ORDER_ITEM + " (id_ordine, id_info_prodotto, quantita, prezzo)"
+				+ " VALUES (?,?,?,?)";
+		String queryDiminuisciQuantita = 
+				"UPDATE " + ProductDao.TABLE_PROD_IN_VENDITA
+				+ " SET quantita = quantita - ?"
+				+ " WHERE id_info_prodotto = ?";
+		String queryRemoveProdottiFiniti = 
+				"DELETE FROM " + ProductDao.TABLE_PROD_IN_VENDITA
+				+ " WHERE quantita = 0 ";
+				
+		
+		for(int i=1;i<cis.size();i++) {
+			query2+=",(?,?,?,?)";
+		}
+
+		try {
+			c = ds.getConnection();
+			// prendo l'id della nuova row creata
+			p = c.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+			p.setInt(1, id_utente);
+			p.setString(2, indirizzo);
+			p.executeUpdate();
+			ResultSet rs = p.getGeneratedKeys();
+			rs.next();
+			int id = rs.getInt(1);
+			rs.close();
+			p.close();
+			
+			p = c.prepareStatement(query2);
+			for(int i=0;i<cis.size();i++) {
+				p.setInt((i*4)+1, id);
+				p.setInt((i*4)+2, cis.get(i).getProductBean().getId());
+				p.setInt((i*4)+3, cis.get(i).getQuantita());
+				p.setDouble((i*4)+4, cis.get(i).getProductBean().getPrezzo());
+				PreparedStatement p_diminuisci = c.prepareStatement(queryDiminuisciQuantita);
+				p_diminuisci.setInt(1, cis.get(i).getQuantita());
+				p_diminuisci.setInt(2, cis.get(i).getProductBean().getId());
+				p_diminuisci.executeUpdate();
+				p_diminuisci.close();
+			}
+			p.executeUpdate();
+			p.close();
+			
+			p = c.prepareStatement(queryRemoveProdottiFiniti);
+			p.executeUpdate();			
+		} finally {
+			try {
+				if (p != null)
+					p.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}		
 	}
 }

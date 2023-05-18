@@ -36,7 +36,6 @@ public class CartController extends HttpServlet {
 			switch (action) {
 			case "add": {
 				try {
-					System.out.println("AGGIUNGO");
 					carrello.addProduct(productDao.getProductById(id));
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -58,10 +57,19 @@ public class CartController extends HttpServlet {
 			response.sendRedirect("negozio.jsp");
 			return;
 		}
+		if (redirect != null && redirect.equals("carrello")) {
+			response.sendRedirect("carrello.jsp");
+			return;
+		}
 
 		request.setAttribute("carrello", carrello);
 		request.getRequestDispatcher("/carrello.jsp").forward(request, response);
 		return;
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

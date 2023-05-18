@@ -59,7 +59,7 @@
 	
 	        <div class="input-wrapper">
 	          <label for="prezzo">Prezzo</label>
-	          <input type="number" id="prezzo" name="prezzo" required />
+	          <input type="number" id="prezzo" name="prezzo" step="0.10" required />
 	        </div>
 	
 	        <div class="input-wrapper">

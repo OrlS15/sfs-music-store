@@ -22,7 +22,7 @@
 </head>
 <body>
 	<header>
-		<a href="./"> <span class="logo-wrapper"> <img
+		<a href="${pageContext.request.contextPath}/"> <span class="logo-wrapper"> <img
 				src="${pageContext.request.contextPath}/assets/images/logo.png" alt="logo" id="logo" />
 				<p>SFS Music Store</p>
 		</span>

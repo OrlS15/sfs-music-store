@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: white;
+	scroll-behavior: smooth;
+	font-family: "Ubuntu", sans-serif;
+}
+
+a {
+	all: unset;
+	cursor: pointer;
+}
+
+body {
+	background-color: black;
+	background-image: url("../images/sfondo-darker.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 82%;
+	min-height: 100svh;
+}
+
+section {
+	padding-top: 100px;
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100svh;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+	margin-bottom: 50px;
+}
+
+h1 {
+	margin: 30px;
+}
+
+form{
+	background-color: #292525;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+form input{
+	width: 250px;
+	height: 30px;
+	border-radius: 5px;
+	border: none;
+	padding: 0 7px;
+	color: black;
+}
+
+button[type=submit]{
+	padding: 7px;
+	color: black;
+	background-color: #3acd3b;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	margin-top: 15px;
+	font-size: 18px;
+}
+
+.riepilogo{
+	background-color: #292525;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.riepilogo h3{
+	margin: 5px 0;
+}
+
+.riepilogo ul{
+	list-style: none;
+}

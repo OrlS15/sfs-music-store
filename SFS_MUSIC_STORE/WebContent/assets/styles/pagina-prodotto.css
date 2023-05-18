@@ -1,30 +1,28 @@
-@charset "ISO-8859-1";
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
-  scroll-behavior: smooth;
-  font-family: "Ubuntu", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: white;
+	scroll-behavior: smooth;
+	font-family: "Ubuntu", sans-serif;
 }
 
 a {
-  all: unset;
+	all: unset;
 }
-svg,
-path {
-  user-select: none;
-  -webkit-user-drag: none;
+
+svg, path {
+	user-select: none;
+	-webkit-user-drag: none;
 }
 
 body {
-  background-color: black;
-  background-image: url("../images/sfondo-darker.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 82%;
-  min-height: 100svh;
+	background-color: black;
+	background-image: url("../images/sfondo-darker.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 82%;
+	min-height: 100svh;
 }
 
 section {
@@ -35,37 +33,68 @@ section {
 	align-items: center;
 }
 
-p{
+p {
 	color: white;
-	font-family: "Kyiv Type Titling";
 	font-weight: bold;
 }
-.global{
+
+.global {
 	display: flex;
 	gap: 20vw;
 	justify-content: space-between;
+	align-items: center;
 }
 
-.basicText{
+.imageBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.imageBox img{
+	width: 200px;
+}
+
+.sellProduct {
+	text-align: center;
+}
+
+.basicText {
 	color: white;
-	font-family: "Kyiv Type Titling";
 	font-size: xx-large;
 	font-weight: bold;
 }
 
-.infoBox{
+.infoBox {
 	display: flex;
 	flex-direction: column;
-	column-gap: 20px;
-	
+	gap: 15px;
 }
 
-.buyButton{
-	width: 12vw;
-	height: 6vh;
+.buyButton {
+	width: 200px;
+	height: 30px;
 	background-color: green;
-	border: 2px; 
+	border: 2px;
 	border-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
 }
 
+.buyButton img {
+	width: 20px;
+}
 
+@media screen and (max-width: 768px) {
+	.global{
+		padding-top: 100px;
+		flex-direction: column;
+	}
+}

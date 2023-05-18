@@ -3,6 +3,8 @@ package interfaces;
 import java.sql.SQLException;
 
 import beans.ProductBean;
+import others.CartItem;
+
 import java.util.List;
 
 public interface IProductDao {
@@ -19,4 +21,6 @@ public interface IProductDao {
 	public void editProduct(int id, double prezzo, int quantita) throws SQLException;
 	
 	public void deleteProduct(int id) throws SQLException;
+	
+	public void effettuaOrdine(List<CartItem> cis, int id_utente, String indirizzo) throws SQLException;
 }
