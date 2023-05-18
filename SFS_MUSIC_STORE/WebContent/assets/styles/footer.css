@@ -1,7 +1,6 @@
 /* <footer> */
 footer {
 	margin-top: auto;
-	background-color: #000;
 	display: flex;
 	justify-content: center;
 	gap: 20px;
