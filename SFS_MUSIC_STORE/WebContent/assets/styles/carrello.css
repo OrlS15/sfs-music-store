@@ -26,7 +26,6 @@ section {
 	min-height: 100svh;
 	display: flex;
 	flex-direction: column;
-	min-height: 100svh;
 }
 
 .wrapper-cart {
@@ -68,7 +67,7 @@ section {
 
 .cart-checkout-bg {
 	padding: 20px;
-	border: 1px solid #3acd3b; margin : auto;
+	border: 1px solid #3acd3b;
 	background-color: #292525;
 	display: flex;
 	flex-direction: column;
