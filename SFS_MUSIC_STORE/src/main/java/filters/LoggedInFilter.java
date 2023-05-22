@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.UserBean;
 
-@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/checkout", "/checkout.jsp"})
+@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/checkout", "/checkout.jsp", "/i-miei-ordini", "/i-miei-ordini.jsp"})
 public class LoggedInFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 

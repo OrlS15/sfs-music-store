@@ -21,6 +21,4 @@ public interface IProductDao {
 	public void editProduct(int id, double prezzo, int quantita) throws SQLException;
 	
 	public void deleteProduct(int id) throws SQLException;
-	
-	public void effettuaOrdine(List<CartItem> cis, int id_utente, String indirizzo) throws SQLException;
 }

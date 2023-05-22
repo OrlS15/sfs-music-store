@@ -27,3 +27,108 @@ section {
 	display: flex;
 	flex-direction: column;
 }
+
+h1{
+	margin-left: 100px;
+}
+
+.items-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	background-color: #292525;
+	width: 70%;
+	margin: 100px auto;
+	border-radius: 10px;
+	flex-wrap: wrap;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.data-indirizzo{
+	color: black;
+	font-size: 12px;
+}
+
+.card-prodotto {
+  background: white;
+  width: 40%;
+  min-width: 300px;
+  max-width: 400px;
+  height: 100px;
+  max-height: 100px;
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  gap: 20px;
+}
+.image-prodotto {
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-prodotto img {
+  display: block;
+  border-right: 1px solid gray;
+  padding: 0 15px;
+  width: 100%;
+}
+.info-prodotto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 73%;
+}
+.prodotto-title {
+  color: black;
+  text-align: left;
+  font-size: 17px;
+}
+.warehouse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 15px;
+  padding: 5px 0;
+  width: 105px;
+  gap: 2px;
+  margin-left: auto;
+}
+.warehouse p {
+  font-size: 14px;
+}
+.prezzo-prodotto {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.link-img-prodotto{
+	cursor: pointer;
+}
+
+.prezzo-prodotto span {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+.prezzo-prodotto a {
+  background: #3acd3b;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+	.items-wrapper{
+		width: 97%;
+	}
+}

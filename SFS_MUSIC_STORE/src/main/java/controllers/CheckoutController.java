@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import beans.UserBean;
+import dao.OrderDao;
 import dao.ProductDao;
 import others.Cart;
 
@@ -51,10 +52,10 @@ public class CheckoutController extends HttpServlet {
 		}
 		
 		
-		ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
+		OrderDao orderDao = new OrderDao((DataSource) getServletContext().getAttribute("DataSource"));
 		try {
 			int id_utente = ((UserBean)request.getSession().getAttribute("user")).getId();
-			productDao.effettuaOrdine(carrello.getProducts(), id_utente, indirizzo);
+			orderDao.effettuaOrdine(carrello.getProducts(), id_utente, indirizzo);
 			request.getSession().setAttribute("carrello", null);
 		} catch (SQLException e) {
 			e.printStackTrace();
