@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.UserBean;
 
-@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/checkout", "/checkout.jsp", "/i-miei-ordini", "/i-miei-ordini.jsp"})
+@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/checkout", "/checkout.jsp", "/i-miei-ordini", "/i-miei-ordini.jsp", "/le-mie-vendite", "/le-mie-vendite.jsp"})
 public class LoggedInFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class LoggedInFilter extends HttpFilter implements Filter {
 
 		UserBean ub = (UserBean) req.getSession().getAttribute("user");
 		if (ub == null) {
-			res.sendRedirect(req.getContextPath() + "/carrello");
+			res.sendRedirect(req.getContextPath() + "/");
 			return;
 		}
 

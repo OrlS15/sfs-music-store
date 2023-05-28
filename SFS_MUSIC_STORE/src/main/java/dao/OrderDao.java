@@ -16,10 +16,10 @@ import interfaces.IOrderDao;
 import others.CartItem;
 
 public class OrderDao implements IOrderDao{
-	//private static final String TABLE_INFO_PRODOTTO = "info_prodotto";
-	private static final String TABLE_PROD_IN_VENDITA = "prod_in_vendita";
-	private static final String TABLE_ORDINE = "ordine";
-	private static final String TABLE_ORDER_ITEM = "order_item";
+	//private static final String TABLE_INFO_PRODOTTO = "INFO_PRODOTTO";
+	private static final String TABLE_PROD_IN_VENDITA = "PROD_IN_VENDITA";
+	private static final String TABLE_ORDINE = "ORDINE";
+	private static final String TABLE_ORDER_ITEM = "ORDER_ITEM";
 	private DataSource ds = null;
 
 	public OrderDao(DataSource ds) {
@@ -101,10 +101,10 @@ public class OrderDao implements IOrderDao{
 		ProductBean pb = null;
 
 		String query = 
-				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine FROM order_item as oi"
-				+ " INNER JOIN ordine as o ON o.id = oi.id_ordine"
-				+ " INNER JOIN utente as u ON o.id_utente = u.id"
-				+ " INNER JOIN info_prodotto as ip ON ip.id = oi.id_info_prodotto"
+				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine FROM ORDER_ITEM as oi"
+				+ " INNER JOIN ORDINE as o ON o.id = oi.id_ordine"
+				+ " INNER JOIN UTENTE as u ON o.id_utente = u.id"
+				+ " INNER JOIN INFO_PRODOTTO as ip ON ip.id = oi.id_info_prodotto"
 				+ " WHERE id_utente = ?";
 		try {
 			c = ds.getConnection();
@@ -143,10 +143,10 @@ public class OrderDao implements IOrderDao{
 		ProductBean pb = null;
 		
 		String query = 
-				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine, data, indirizzo, id_utente FROM order_item as oi"
-						+ " INNER JOIN ordine as o ON o.id = oi.id_ordine"
-						+ " INNER JOIN utente as u ON o.id_utente = u.id"
-						+ " INNER JOIN info_prodotto as ip ON ip.id = oi.id_info_prodotto";
+				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine, data, indirizzo, id_utente FROM ORDER_ITEM as oi"
+						+ " INNER JOIN ORDINE as o ON o.id = oi.id_ordine"
+						+ " INNER JOIN UTENTE as u ON o.id_utente = u.id"
+						+ " INNER JOIN INFO_PRODOTTO as ip ON ip.id = oi.id_info_prodotto";
 		try {
 			c = ds.getConnection();
 			p = c.prepareStatement(query);

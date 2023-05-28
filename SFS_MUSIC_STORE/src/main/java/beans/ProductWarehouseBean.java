@@ -3,7 +3,7 @@ package beans;
 import java.io.InputStream;
 import java.io.Serializable;
 
-public class ProductBean implements Serializable {
+public class ProductWarehouseBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
@@ -14,13 +14,25 @@ public class ProductBean implements Serializable {
 	private int quantita;
 	private String condizione;
 	private InputStream immagineIS;
+	
+	private String stato;
+	private int id_richiesta_vendita;
 
-	public ProductBean() {
+	public int getId_richiesta_vendita() {
+		return id_richiesta_vendita;
+	}
+
+	public void setId_richiesta_vendita(int id_richiesta_vendita) {
+		this.id_richiesta_vendita = id_richiesta_vendita;
+	}
+
+	public ProductWarehouseBean() {
 		id = -1;
 		nome = "";
 		descrizione = "";
 		prezzo = 0;
 		quantita = 0;
+		stato="";
 	}
 
 	public int getId() {
@@ -85,5 +97,13 @@ public class ProductBean implements Serializable {
 
 	public void setImmagineIS(InputStream immagineIS) {
 		this.immagineIS = immagineIS;
+	}
+	
+	public String getStato() {
+		return stato;
+	}
+
+	public void setStato(String stato) {
+		this.stato = stato;
 	}
 }

@@ -57,9 +57,12 @@ create table PROD_IN_VENDITA(
 create table RICHIESTA_VENDITA(
 	id int auto_increment NOT NULL,
     id_info_prodotto int NOT NULL,
-    stato varchar(20) NOT NULL,
+    prezzo double NOT NULL,
+    stato varchar(50) NOT NULL,
+    id_utente int NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY(id_info_prodotto) REFERENCES INFO_PRODOTTO(id)
+    FOREIGN KEY(id_info_prodotto) REFERENCES INFO_PRODOTTO(id),
+    FOREIGN KEY(id_utente) REFERENCES UTENTE(id)
 );
 
 create table CONTROLLATA_DA(

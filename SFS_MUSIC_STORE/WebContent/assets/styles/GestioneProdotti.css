@@ -25,6 +25,26 @@ section{
 	padding-top: 80px;
 }
 
+.prezzo{
+	color: black;
+}
+
+.stato{
+	border-radius: 10px;
+	padding: 5px;
+	color: black;
+}
+
+.bg-orange{
+	background: orange;
+}
+.bg-green{
+	background: green;
+}
+.bg-red{
+	background: red;
+}
+
 #form-add-product {
   width: 600px;
   display: flex;

@@ -15,8 +15,8 @@ import interfaces.IProductDao;
 import others.CartItem;
 
 public class ProductDao implements IProductDao {
-	private static final String TABLE_INFO_PRODOTTO = "info_prodotto";
-	private static final String TABLE_PROD_IN_VENDITA = "prod_in_vendita";
+	private static final String TABLE_INFO_PRODOTTO = "INFO_PRODOTTO";
+	private static final String TABLE_PROD_IN_VENDITA = "PROD_IN_VENDITA";
 	private DataSource ds = null;
 
 	public ProductDao(DataSource ds) {
@@ -54,7 +54,7 @@ public class ProductDao implements IProductDao {
 			p.setInt(1, id);
 			p.setDouble(2, pb.getPrezzo());
 			p.setInt(3, pb.getQuantita());
-			p.setString(4, (String) pb.getCondizione());
+			p.setString(4, pb.getCondizione());
 			p.executeUpdate();
 
 		} finally {
@@ -117,9 +117,9 @@ public class ProductDao implements IProductDao {
 			ResultSet rs = p.executeQuery();
 			if (rs.next()) {
 				pb = new ProductBean();
-				pb.setId(Integer.parseInt(rs.getString("id")));
-				pb.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
-				pb.setQuantita(Integer.parseInt(rs.getString("quantita")));
+				pb.setId(rs.getInt("id"));
+				pb.setPrezzo(rs.getDouble("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
 				pb.setCondizione(rs.getString("condizione"));
 				pb.setNome(rs.getString("nome"));
 				pb.setDescrizione(rs.getString("descrizione"));
@@ -155,9 +155,9 @@ public class ProductDao implements IProductDao {
 			ResultSet rs = p.executeQuery();
 			while (rs.next()) {
 				ProductBean pb = new ProductBean();
-				pb.setId(Integer.parseInt(rs.getString("id")));
-				pb.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
-				pb.setQuantita(Integer.parseInt(rs.getString("quantita")));
+				pb.setId(rs.getInt("id"));
+				pb.setPrezzo(rs.getDouble("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
 				pb.setCondizione(rs.getString("condizione"));
 				pb.setNome(rs.getString("nome"));
 				pb.setDescrizione(rs.getString("descrizione"));

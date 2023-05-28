@@ -45,7 +45,7 @@
 						<hr />
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/i-miei-ordini">I miei ordini</a></li>
-							<li><a href="${pageContext.request.contextPath}/account">Le mie vendite</a></li>
+							<li><a href="${pageContext.request.contextPath}/le-mie-vendite">Le mie vendite</a></li>
 							<% if(isAdmin==true){ %>
 							<li><a href="${pageContext.request.contextPath}/admin/richieste-vendita.jsp">RICHIESTE VENDITA</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/gestione-prodotti.jsp">GESTIONE PRODOTTI</a></li>
