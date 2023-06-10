@@ -13,7 +13,7 @@
 	%>
 	
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/styles/header.css" />
