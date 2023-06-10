@@ -1,7 +1,7 @@
+<%@page import="org.owasp.encoder.Encode"%>
 <%@page import="beans.ProductBean"%>
 <%@page import="java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
 //filtro condizioni
@@ -35,7 +35,6 @@ if(ordina == null)
 String search = request.getParameter("search");
 if(search == null)
 	search = "";
-System.out.println(search);
 
 //filtro page
 String pageNum_str = request.getParameter("page");
@@ -142,12 +141,12 @@ query += "&cat=" + cat;
 					<div class="filtro-content">
 						<div>
 							<label for="">Min:</label> <input type="number" id="min_price"
-								name="min_price" placeholder="0" value="<%=f_prezzo_min%>" /> <span>&euro;</span>
+								name="min_price" placeholder="0" value="<%=Encode.forHtml(f_prezzo_min) %>" /> <span>&euro;</span>
 						</div>
 						<div>
 							<label for="filtro_warehouse">Max:</label> <input type="number"
 								id="max_price" name="max_price" placeholder="0"
-								value="<%=f_prezzo_max%>" /> <span>&euro;</span>
+								value="<%=Encode.forHtml(f_prezzo_max) %>" /> <span>&euro;</span>
 						</div>
 					</div>
 				</div>
@@ -176,7 +175,7 @@ query += "&cat=" + cat;
 				<div class="searchbar" id="searchbar">
 					<form action="" autocomplete="off">
 						<input type="text" name="search" placeholder="Cerca..."
-							autocomplete="off" <%=!search.isBlank() ? "value=" + search :"" %> />
+							autocomplete="off" <%=!search.isBlank() ? "value=" + Encode.forHtml(search) :"" %> />
 					</form>
 					<!-- search icon -->
 					<svg width="23" height="23" viewBox="0 0 23 23" fill="none"
