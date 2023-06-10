@@ -58,7 +58,7 @@ if (pbs == null) {
 String query = "?c=" + f_condizioni + "&min_price=" + f_prezzo_min + "&max_price=" + f_prezzo_max + "&ordina=" + ordina;
 if (f_cat != null)
 	for (String cat : f_cat)
-query += "&cat=" + cat;
+		query += "&cat=" + Encode.forHtml(cat);
 %>
 
 <!DOCTYPE html>
