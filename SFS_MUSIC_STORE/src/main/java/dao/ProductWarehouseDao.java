@@ -18,6 +18,7 @@ public class ProductWarehouseDao implements IProductWarehouseDao
 {
 	private static final String TABLE_INFO_PRODOTTO = "INFO_PRODOTTO";
 	private static final String TABLE_RICHIESTA_VENDITA = "RICHIESTA_VENDITA";
+	private static final String TABLE_PROD_IN_VENDITA = "PROD_IN_VENDITA";
 	private DataSource ds = null;
 
 	public ProductWarehouseDao(DataSource ds) {
@@ -223,8 +224,44 @@ public class ProductWarehouseDao implements IProductWarehouseDao
 	}
 
 	@Override
-	public void addRichiestaToProdInVendita(int id) throws SQLException {
-		//TODO
+	public void addRichiestaToProdInVendita(int id, double prezzo) throws SQLException {
+		Connection c = null;
+		PreparedStatement p = null;
+
+		String query1 = "SELECT id_info_prodotto FROm " + TABLE_RICHIESTA_VENDITA
+						+ " WHERE id = ?";
+		String query2 = "INSERT INTO " + TABLE_PROD_IN_VENDITA
+				+ " (id_info_prodotto, prezzo, quantita, condizione) VALUES (?, ?, ?, ?)";
+
+		try {
+			c = ds.getConnection();
+			p = c.prepareStatement(query1);
+			p.setInt(1, id);
+			p.executeQuery();
+			ResultSet rs = p.executeQuery();
+			
+			rs.next();
+			int id_info_prodotto = rs.getInt("id_info_prodotto");
+			rs.close();
+			p.close();
+
+			// metto il prodotto in vendita
+			p = c.prepareStatement(query2);
+			p.setInt(1, id_info_prodotto);
+			p.setDouble(2, prezzo);
+			p.setInt(3, 1);
+			p.setString(4, "warehouse");
+			p.executeUpdate();
+
+		} finally {
+			try {
+				if (p != null)
+					p.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
 	}
 
 }

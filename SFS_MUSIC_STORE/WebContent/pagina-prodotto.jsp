@@ -31,10 +31,6 @@ pageEncoding="ISO-8859-1"%>
             <div class="global">
                 <div class="imageBox">
                     <img src="getImage?id=<%=pb.getId() %>" />
-                    <div class="sellProduct">
-                        <p>Hai questo prodotto e vuoi venderlo?</p>
-                        <a href="/negozio.jsp">Invia la tua offerta!</a>
-                    </div>
                 </div>
                 <div class="infoBox">
                     <div class="basicText"><%=pb.getNome() %></div>

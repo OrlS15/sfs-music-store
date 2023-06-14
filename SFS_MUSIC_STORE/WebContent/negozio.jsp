@@ -1,5 +1,5 @@
-<%@page import="org.owasp.encoder.Encode"%>
 <%@page import="beans.ProductBean"%>
+<%@page import="org.owasp.encoder.Encode"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

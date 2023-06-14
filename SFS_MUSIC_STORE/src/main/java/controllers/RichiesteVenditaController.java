@@ -57,11 +57,14 @@ public class RichiesteVenditaController extends HttpServlet {
 	private void acceptRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idRichiesta_str = request.getParameter("id");
+		String prezzo = request.getParameter("prezzo");
 
 		ProductWarehouseDao productDao = new ProductWarehouseDao((DataSource) getServletContext().getAttribute("DataSource"));
 		
 		try {
-			productDao.changeRichiestaVenditaStato(Integer.parseInt(idRichiesta_str), "ACCETTATO");
+			int id = Integer.parseInt(idRichiesta_str);
+			productDao.addRichiestaToProdInVendita(id, Double.parseDouble(prezzo));
+			productDao.changeRichiestaVenditaStato(id, "ACCETTATO");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

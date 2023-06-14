@@ -39,8 +39,6 @@ if (pbs == null) {
 							</a>
 						</div>
 						<div class="info-prodotto">
-	
-	
 							<div class="prodotto-title"><%=pb.getNome()%></div>
 							<div class="prezzo-prodotto">
 								<span><%=pb.getPrezzo()%>&euro;</span>

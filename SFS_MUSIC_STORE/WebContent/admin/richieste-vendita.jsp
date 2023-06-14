@@ -78,10 +78,12 @@
 	                <div class="prodotto-title"><%=pb.getNome() %></div>
 	              </div>
 	              <div class="prezzo-prodotto">
-	                <form action="richieste-vendita?action=accept&id=<%=pb.getId_richiesta_vendita() %>" class="form-edit-product" method="POST">
+	                <form action="richieste-vendita" class="form-edit-product" method="POST">
 	                  <div class="input-wrapper">
 	                    <label for="prezzo">Prezzo</label>
 	                    <input type="number" name="prezzo" id="prezzo" value="<%=pb.getPrezzo() %>" />
+	                    <input type="hidden" name="action" value="accept" />
+	                    <input type="hidden" name="id" value="<%=pb.getId_richiesta_vendita() %>" />
 	                  </div>
 	                  <input type="submit" value="ACCETTA" />
 	                </form>

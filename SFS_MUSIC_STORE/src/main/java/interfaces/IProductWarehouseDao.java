@@ -19,5 +19,5 @@ public interface IProductWarehouseDao {
 	
 	public void changeRichiestaVenditaStato(int id, String stato) throws SQLException;
 	
-	public void addRichiestaToProdInVendita(int id) throws SQLException;
+	public void addRichiestaToProdInVendita(int id, double prezzo) throws SQLException;
 }
