@@ -124,7 +124,8 @@ public class ProductWarehouseDao implements IProductWarehouseDao
 		String query = 
 				"SELECT rv.id, prezzo, id_info_prodotto, nome, descrizione, tipo, stato FROM " + TABLE_RICHIESTA_VENDITA + " as rv"
 				+ " INNER JOIN " + TABLE_INFO_PRODOTTO + " as ip"
-				+ " ON rv.id_info_prodotto = ip.id ";
+				+ " ON rv.id_info_prodotto = ip.id "
+				+ " WHERE stato = 'IN ATTESA DI REVISIONE'";
 		
 		try {
 			c = ds.getConnection();

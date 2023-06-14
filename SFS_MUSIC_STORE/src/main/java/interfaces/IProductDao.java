@@ -18,6 +18,8 @@ public interface IProductDao {
 	
 	public List<ProductBean> getFilteredProducts(String search, String condizione, double min_price, double  max_price, String ordina, List<String> categorie, int limit, int offset) throws SQLException;
 
+	public List<ProductBean> getSearchProducts(String search) throws SQLException;
+	
 	public void editProduct(int id, double prezzo, int quantita) throws SQLException;
 	
 	public void deleteProduct(int id) throws SQLException;

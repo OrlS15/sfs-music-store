@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/fonts.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/index.css" />
 <script src="${pageContext.request.contextPath}/assets/js/index.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <title>SFS Music Store</title>
 </head>
@@ -38,6 +39,11 @@
 							<input type="text" name="search" placeholder=""
 								autocomplete="off" />
 						</form>
+						<div class="searchbar-ajax">
+								<ul>
+									
+								</ul>
+						</div>
 						<!-- search icon -->
 						<svg width="23" height="23" viewBox="0 0 23 23" fill="none"
 							xmlns="http://www.w3.org/2000/svg">

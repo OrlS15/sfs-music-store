@@ -303,14 +303,57 @@ public class ProductDao implements IProductDao {
 			p.setInt(statementCount + categorie.size() + 1, limit);
 			p.setInt(statementCount + categorie.size() + 2, offset);
 
-			System.out.println(p);
+			//System.out.println(p);
 
 			ResultSet rs = p.executeQuery();
 			while (rs.next()) {
 				ProductBean pb = new ProductBean();
-				pb.setId(Integer.parseInt(rs.getString("id")));
-				pb.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
-				pb.setQuantita(Integer.parseInt(rs.getString("quantita")));
+				pb.setId(rs.getInt("id"));
+				pb.setPrezzo(rs.getInt("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
+				pb.setCondizione(rs.getString("condizione"));
+				pb.setNome(rs.getString("nome"));
+				pb.setDescrizione(rs.getString("descrizione"));
+				pb.setTipo(rs.getString("tipo"));
+				pbs.add(pb);
+			}
+		} finally {
+			try {
+				if (p != null)
+					p.close();
+			} finally {
+				if (c != null)
+					c.close();
+			}
+		}
+		return pbs;
+	}
+
+	@Override
+	public List<ProductBean> getSearchProducts(String search) throws SQLException {
+		Connection c = null;
+		PreparedStatement p = null;
+		List<ProductBean> pbs = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + ProductDao.TABLE_PROD_IN_VENDITA 
+				+ " INNER JOIN "
+				+ ProductDao.TABLE_INFO_PRODOTTO 
+				+ " ON id_info_prodotto = id "
+				+ " WHERE nome LIKE ? "
+				+ " LIMIT 5"; 
+		
+		try {
+			c = ds.getConnection();
+			p = c.prepareStatement(query);
+			
+			p.setString(1, '%'+search+'%');
+
+			ResultSet rs = p.executeQuery();
+			while (rs.next()) {
+				ProductBean pb = new ProductBean();
+				pb.setId(rs.getInt("id"));
+				pb.setPrezzo(rs.getInt("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
 				pb.setCondizione(rs.getString("condizione"));
 				pb.setNome(rs.getString("nome"));
 				pb.setDescrizione(rs.getString("descrizione"));

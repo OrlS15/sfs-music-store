@@ -88,6 +88,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  position: relative;
 }
 .searchbar input {
   width: 100%;
@@ -107,6 +108,27 @@ body {
 .searchbar:has(input:focus) {
   border: 3px solid #3acd3b;
 }
+.searchbar-ajax{
+	background: white;
+	width: 100%;
+	position: absolute;
+	top: 30px;
+	display: none;
+}
+.searchbar-ajax ul{
+	list-style: none;
+	padding: 10px 0 0 0;
+}
+.searchbar-ajax ul li{
+	color: black;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.searchbar-ajax ul li:hover{
+	background: #9a9996;
+}
+
 .hero-last {
   flex: 1;
 }
