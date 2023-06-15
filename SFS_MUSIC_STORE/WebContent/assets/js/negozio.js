@@ -4,3 +4,10 @@ function toggleFilterMenu() {
 document
   .querySelectorAll(".show-filtri")
   .forEach((el) => el.addEventListener("click", toggleFilterMenu));
+  
+  
+  
+  
+  
+  
+  

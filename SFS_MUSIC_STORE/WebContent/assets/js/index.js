@@ -2,7 +2,6 @@ $(document).ready(() => {
 	//placeholder animation
 	function startSearchbarAnimation(avantiSpeed, indietroSpeed) {
 		const searchbar = document.querySelector("#searchbar input");
-
 		function placeholderTypingEffect(input, text, speed, avanti = true) {
 			return new Promise((resolve, _) => {
 				let i = avanti ? 0 : text.length - 1;
@@ -18,7 +17,6 @@ $(document).ready(() => {
 				}, speed);
 			});
 		}
-
 		function startLoop(instrumentsList, avanti, j) {
 			placeholderTypingEffect(
 				searchbar,
@@ -29,11 +27,9 @@ $(document).ready(() => {
 				startLoop(instrumentsList, !avanti, !avanti ? (j + 1) % instrumentsList.length : j);
 			});
 		}
-
 		startLoop(["Telecaster Relic", "Gibson Les Paul", "Fender Stratocaster", "Gibson SG"], true, 0);
 	}
 	startSearchbarAnimation(200, 50);
-
 	//ajax
 	function updateProducts() {
 		$.post("AjaxSearchProduct", { "search": $("#searchbar input").val() }, function (data) {

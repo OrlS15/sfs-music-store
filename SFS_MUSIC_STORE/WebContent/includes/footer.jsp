@@ -13,7 +13,7 @@
 				attività  SFS Store è cresciuta fino a diventare uno dei centri più
 				all'avanguardia del mercato italiano, al punto che nell'ottobre 2011
 				il punto vendita viene trasferito nuovamente, questa volta in via Le
-				Mani dal Naso, arrivando a oltre 2220mq di superficie espositiva.</p>
+				Mani dal Naso, arrivando a oltre 2800mq di superficie espositiva.</p>
 		</div>
 		<div class="footer-row">
 			<p class="footer-row-title">CONTATTACI</p>
