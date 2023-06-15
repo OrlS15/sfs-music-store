@@ -36,17 +36,21 @@ $(document).ready(() => {
 
 	//ajax
 	function updateProducts() {
-		$.post("AjaxSearchProduct", { "search": $("#searchbar input").val() }, (data) => {
-			console.log(data.products);
-
-			if (!data?.error) {
-				let ul = document.querySelector(".searchbar-ajax ul");
-				data.products.forEach((d) => {
-					let li = document.createElement("li");
-					li.textContent = d.nome;
-					li.onclick = () => window.location = location.pathname + "/pagina-prodotto?id=" + d.id
-					ul.append(li);
-				})
+		$.post("AjaxSearchProduct", { "search": $("#searchbar input").val() }, function (data) {
+			if (!data.error) {
+				if(data.products && data.products.length > 0){
+					let ul = document.querySelector(".searchbar-ajax ul");
+					document.querySelector(".searchbar-ajax").style.display = "block";
+					document.querySelector(".searchbar-ajax ul").innerHTML = "";
+					data.products.forEach((d) => {
+						let li = document.createElement("li");
+						li.textContent = d.nome;
+						li.onclick = function () { 
+							window.location = location.pathname + "/pagina-prodotto?id=" + d.id 
+						};
+						ul.append(li);
+					})
+				}
 			}
 		});
 	}
@@ -55,8 +59,6 @@ $(document).ready(() => {
 		if (val == null || val == "") {
 			document.querySelector(".searchbar-ajax").style.display = "none";
 		} else {
-			document.querySelector(".searchbar-ajax").style.display = "block";
-			document.querySelector(".searchbar-ajax ul").innerHTML = "";
 			updateProducts()
 		}
 	});
