@@ -35,7 +35,7 @@
 							style="color: #3acd3b; text-shadow: 0px 2px 0px #000000">cercando</span>?
 					</h3>
 					<div class="searchbar" id="searchbar">
-						<form action="" autocomplete="off">
+						<form action="${pageContext.request.contextPath}/negozio" autocomplete="off" method="get">
 							<input type="text" name="search" placeholder=""
 								autocomplete="off" />
 						</form>
