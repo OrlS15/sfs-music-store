@@ -2,8 +2,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
 	color: white;
+	
 	scroll-behavior: smooth;
+	
 	font-family: "Ubuntu", sans-serif;
 }
 
@@ -23,18 +26,26 @@ body {
 
 section {
 	padding-top: 100px;
+	
 	min-height: 100svh;
+	
 	display: flex;
 	flex-direction: column;
 }
 
 h1{
+	
+	
 	margin-left: 100px;
 }
 
 .items-wrapper{
+	
 	display: flex;
+	
+	
 	justify-content: center;
+	
 	align-items: center;
 	gap: 20px;
 	padding: 20px;

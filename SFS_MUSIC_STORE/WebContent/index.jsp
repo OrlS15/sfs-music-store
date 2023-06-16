@@ -101,7 +101,6 @@
 						</div>
 						<img src="${pageContext.request.contextPath}/assets/images/categorie/basso.png" alt="basso" />
 					</div>
-
 					<div class="card-categoria">
 						<div class="card-categoria-info">
 							<p>Chitarre</p>
@@ -109,7 +108,6 @@
 						</div>
 						<img src="${pageContext.request.contextPath}/assets/images/categorie/chitarra.png" alt="basso" />
 					</div>
-
 					<div class="card-categoria">
 						<div class="card-categoria-info">
 							<p>Strumenti a corda</p>
@@ -117,7 +115,6 @@
 						</div>
 						<img src="${pageContext.request.contextPath}/assets/images/categorie/violino.png" alt="basso" />
 					</div>
-
 					<div class="card-categoria">
 						<div class="card-categoria-info">
 							<p>Batterie</p>
@@ -125,7 +122,6 @@
 						</div>
 						<img src="${pageContext.request.contextPath}/assets/images/categorie/batteria.png" alt="basso" />
 					</div>
-
 					<div class="card-categoria">
 						<div class="card-categoria-info">
 							<p>Fiati</p>
@@ -133,7 +129,6 @@
 						</div>
 						<img src="${pageContext.request.contextPath}/assets/images/categorie/tromba.png" alt="basso" />
 					</div>
-
 					<div class="card-categoria">
 						<div class="card-categoria-info">
 							<p>Pianoforti</p>
@@ -157,7 +152,6 @@
 		</div>
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
-
 </body>
 
 </html>

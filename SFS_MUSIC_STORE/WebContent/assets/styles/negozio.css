@@ -8,20 +8,29 @@
 }
 
 a {
+	
   all: unset;
 }
 
 svg,
 path {
+	
   user-select: none;
   -webkit-user-drag: none;
+
 }
 
 body {
-  background-color: black;
+
+	background-color: black;
+  
   background-image: url("../images/sfondo-darker.jpg");
+ 
   background-size: cover;
+ 
+ 
   background-repeat: no-repeat;
+ 
   background-position: 82%;
   min-height: 100svh;
 }

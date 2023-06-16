@@ -1,17 +1,21 @@
 * {
 	margin: 0;
 	padding: 0;
+
 	box-sizing: border-box;
+
 	color: white;
+
 	scroll-behavior: smooth;
 	font-family: "Ubuntu", sans-serif;
 }
 
+
 a {
 	all: unset;
 }
-
 svg, path {
+	
 	user-select: none;
 	-webkit-user-drag: none;
 }
@@ -53,24 +57,30 @@ p {
 }
 
 .imageBox img {
+
 	width: 200px;
 }
 
 .sellProduct {
+	
 	text-align: center;
 }
 
 .basicText {
 	color: white;
+	
 	font-size: xx-large;
+	
 	font-weight: bold;
 }
 
 .infoBox {
 	display: flex;
+	
 	flex-direction: column;
 	gap: 15px;
 }
+
 
 .buyButton {
 	width: 200px;

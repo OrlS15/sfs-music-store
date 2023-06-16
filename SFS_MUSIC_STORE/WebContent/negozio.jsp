@@ -261,10 +261,12 @@ if (f_cat != null)
 				<div class="next-page">
 					<a href="negozio<%=query %>&page=<%=pageNum+1 %>"  <%=pbs.size()<30?"data-disabled=true":"" %> >Pagina successiva</a>
 				</div>
+				
 			</div>
+			
 		</div>
+		
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
 </body>
-
 </html>

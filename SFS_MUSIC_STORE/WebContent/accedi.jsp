@@ -37,12 +37,18 @@
 					id="email" required /> <label for="password">Password</label> <input
 					type="password" name="password" id="password" required /> <input
 					type="submit" value="ACCEDI" />
+
 			</form>
+
 			<span class="no-account">Non hai ancora un
 				account? <a href="registrati.jsp">Registrati subito!</a>
+
 			</span>
+
 		</div>
+
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
 </body>
+
 </html>

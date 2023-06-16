@@ -89,12 +89,11 @@
 						fill="white" />
           </svg>
 			</div>
-			
+
 		</div>
 		<!-- invisible -->
 		<div class="hamburger-menu">
-			<div class="hamburger-header">
-				
+			<div class="hamburger-header">				
 				<div class="hamburger-menu-icon">
 					<!-- X icon -->
 					<svg width="58" height="58" viewBox="0 0 58 58" fill="none"
@@ -117,4 +116,5 @@
 		</div>
 	</header>
 </body>
+
 </html>

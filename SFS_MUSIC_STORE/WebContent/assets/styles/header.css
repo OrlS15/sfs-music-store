@@ -11,8 +11,11 @@ header {
 }
 
 .logo-wrapper {
+	
 	flex: 1;
+	
 	display: flex;
+	
 	gap: 10px;
 	align-items: center;
 	justify-content: center;
@@ -27,28 +30,37 @@ header {
 }
 
 .logo-wrapper img {
+	
 	width: 40px;
 }
 
 .logo-wrapper p {
 	text-align: center;
+	
 	color: white;
+	
+	
 	font-family: "Kyiv Type Titling", sans-serif;
 	font-size: 32px;
 }
 
 .navbar {
+	
 	flex: 0;
 	display: flex;
+	
 	align-items: end;
+	
 	justify-content: center;
 	gap: 30px;
+	
 	margin-top: 12px;
 }
 
 .navbar ul {
 	list-style: none;
 }
+
 
 .navbar ul li {
 	color: white;

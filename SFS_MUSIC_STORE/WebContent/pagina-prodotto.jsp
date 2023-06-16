@@ -13,8 +13,6 @@ pageEncoding="ISO-8859-1"%>
 		return;
 	}
 %>
-
-
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -47,7 +45,6 @@ pageEncoding="ISO-8859-1"%>
                 </div>
             </div>
         </section>
-        
         <jsp:include page="./includes/footer.jsp"></jsp:include>
     </body>
 </html>

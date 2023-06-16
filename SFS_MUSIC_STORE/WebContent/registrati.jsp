@@ -57,14 +57,10 @@
 			<span class="no-account"> Hai già  un account? <a
 				href="accedi.jsp">Accedi
 					subito!</a>
-	
 			</span>
-	
 		</div>
-	
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
-	
 </body>
 
 </html>

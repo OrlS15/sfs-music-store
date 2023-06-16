@@ -1,9 +1,15 @@
 * {
+  
   margin: 0;
+  
   padding: 0;
+  
   box-sizing: border-box;
+  
   color: white;
+  
   scroll-behavior: smooth;
+  
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -34,16 +40,25 @@ body {
 }
 
 .hero-content {
+  
   height: 100svh;
+  
+  
   display: flex;
+  
   align-items: center;
+  
   position: relative;
 }
 .hero-spectrum {
-  flex: 1;
+
+	flex: 1;
+  
   width: 600px;
+
   overflow: hidden;
 }
+
 .hero-spectrum img {
   width: 100%;
   transform: scale(1.3);

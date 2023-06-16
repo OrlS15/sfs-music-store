@@ -12,7 +12,6 @@
 	}
 	System.out.println(pbs);
 %>
-
 <!DOCTYPE html>
 <html lang="it">
   <head>	
@@ -25,7 +24,6 @@
     />
     <title>SFS Music Store - Le mie vendite</title>
   </head>
-
   <body>
   <jsp:include page="/includes/header.jsp"></jsp:include>
   	<section>
@@ -58,7 +56,6 @@
 	            <option value="pianoforte">Pianoforte</option>
 	          </select>
 	        </div>
-	
 	        <div class="input-wrapper">
 	          <label for="prezzo">Prezzo</label>
 	          <input type="number" id="prezzo" name="prezzo" step="0.10" required />
@@ -76,7 +73,6 @@
 	    <div class="prodotti-wrapper">
 	      <h3>Le mie vendite</h3>
 	      <div class="prodotti-container">
-	      
 	        <% if(pbs!=null) 
 	        for(ProductWarehouseBean pb : pbs){ 
 	        %>
@@ -132,7 +128,6 @@
 	       
 	      </div>
 	    </div>
-
 	</section>
 	<jsp:include page="/includes/footer.jsp"></jsp:include>
   </body>
