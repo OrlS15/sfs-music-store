@@ -8,11 +8,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/fonts.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/index.css" />
+
 <script src="${pageContext.request.contextPath}/assets/js/index.js" defer></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <title>SFS Music Store</title>
 </head>
+
 <body>
 	<jsp:include page="./includes/header.jsp"></jsp:include>
 	<section class="hero">
@@ -64,6 +67,7 @@
 
 			<div class="hero-last"></div>
 		</div>
+		
 		<a href="#categorie">
 			<div class="shop-now">
 				<span>SHOP NOW</span>
@@ -82,7 +86,6 @@
 			</div>
 		</a>
 	</section>
-
 	<section class="categorie" id="categorie">
 		<div class="categorie-content">
 			<div class="categorie-section">
@@ -154,5 +157,7 @@
 		</div>
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
+
 </body>
+
 </html>

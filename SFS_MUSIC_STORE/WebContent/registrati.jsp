@@ -3,9 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+
 <%
 	List<String> errors = (List<String>) request.getAttribute("errors");
 %>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -49,13 +51,21 @@
 				<span class="error error-password"></span>
 				
 				<input type="submit" value="REGISTRATI" />
-			</form>
+	
+		</form>
+	
 			<span class="no-account"> Hai già  un account? <a
 				href="accedi.jsp">Accedi
 					subito!</a>
+	
 			</span>
+	
 		</div>
+	
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
+	
 </body>
+
 </html>
+

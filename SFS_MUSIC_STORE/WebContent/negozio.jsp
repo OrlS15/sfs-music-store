@@ -2,7 +2,6 @@
 <%@page import="org.owasp.encoder.Encode"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
 //filtro condizioni
 String f_condizioni = request.getParameter("c");
@@ -60,8 +59,8 @@ if (f_cat != null)
 	for (String cat : f_cat)
 		query += "&cat=" + Encode.forHtml(cat);
 %>
-
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
 <meta charset="UTF-8" />
@@ -92,6 +91,7 @@ if (f_cat != null)
 						</div>
 					</div>
 				</div>
+
 
 				<div class="filtro">
 					<p class="filtro-title">Categorie</p>
@@ -249,6 +249,7 @@ if (f_cat != null)
 						</div>
 					</div>
 				</div>
+				
 				<%
 				}
 				%>
@@ -265,4 +266,5 @@ if (f_cat != null)
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
 </body>
+
 </html>

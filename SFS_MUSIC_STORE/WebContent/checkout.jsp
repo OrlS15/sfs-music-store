@@ -12,8 +12,11 @@
 %>
 
 <!DOCTYPE html>
+
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="assets/styles/fonts.css" />
@@ -22,7 +25,9 @@
 </head>
 <body>
 
+
 <jsp:include page="./includes/header.jsp"></jsp:include>
+
 
 <section>
 	<h1>Checkout</h1>
@@ -35,6 +40,7 @@
 				<% } %>
 			</ul>
 		</div>
+		
 		<form action="checkout" method="POST">
 			<label for="indirizzo">Indirizzo di consegna: </label>
 			<input type="text" name="indirizzo" id="indirizzo" required />
@@ -56,6 +62,9 @@
 <jsp:include page="./includes/footer.jsp"></jsp:include>
 
 </body>
+
 </html>
+
 </body>
+
 </html>

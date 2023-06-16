@@ -2,8 +2,7 @@
 <%@page import="others.Cart"%>
 <%@page import="others.CartItem"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+    pageEncoding="ISO-8859-1"%> 
 <% 
 	Cart carrello = (Cart) request.getAttribute("carrello");
 	if(carrello == null){
@@ -12,7 +11,6 @@
 	}
 	List<String> errors = (List<String>) request.getAttribute("errors");
 %>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -25,7 +23,6 @@
 <body>
 
 <jsp:include page="./includes/header.jsp"></jsp:include>
-
 <section>
 	<h1>Il tuo carrello</h1>
 	<% if(errors!=null){ %>
@@ -87,9 +84,7 @@
 			</div>
 		</div>
 	</div>
-</section>
-	
+</section>	
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
-
 </body>
 </html>
