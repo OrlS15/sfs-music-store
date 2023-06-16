@@ -62,16 +62,22 @@
 	          <input type="number" id="prezzo" name="prezzo" step="0.10" required />
 	        </div>
 	
+	
+	
 	        <div class="input-wrapper">
 	          <label for="quantita">Quantità </label>
 	          <input type="number" id="quantita" name="quantita" required />
 	        </div>
 	      </div>
 	
+	
+	
 	      <div class="input-wrapper">
 	        <label for="immagine">Immagine</label>
 	        <input type="file" id="immagine" name="immagine" required />
 	      </div>
+	
+	
 	
 	      <input type="submit" value="AGGIUNGI" />
 	    </form>

@@ -10,6 +10,7 @@
 		return;
 	}
 	List<String> errors = (List<String>) request.getAttribute("errors");
+	
 %>
 <!DOCTYPE html>
 <html lang="it">
@@ -22,8 +23,13 @@
 </head>
 <body>
 
+
+
 <jsp:include page="./includes/header.jsp"></jsp:include>
+
 <section>
+
+
 	<h1>Il tuo carrello</h1>
 	<% if(errors!=null){ %>
 		<div class="errors-wrapper">
@@ -35,6 +41,7 @@
 	<div class="wrapper-cart">
 		<div class="cart-items">
 			<% for(CartItem pb : carrello.getProducts()) { %>
+				
 				
 			<div class="card-prodotto">
 					<div class="image-prodotto">
