@@ -58,6 +58,7 @@ if (f_cat != null)
 	for (String cat : f_cat)
 		query += "&cat=" + Encode.forHtml(cat);
 %>
+
 <!DOCTYPE html>
 
 <html lang="it">

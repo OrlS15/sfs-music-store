@@ -27,7 +27,7 @@ pageEncoding="ISO-8859-1"%>
         <section>
             <div class="global">
                 <div class="imageBox">
-                    <img src="getImage?id=<%=pb.getId() %>" />
+                    <img src="getImage?id=<%=pb.getId() %>" alt="Immagine del prodotto"/>
                 </div>
                 <div class="infoBox">
                     <div class="basicText"><%=pb.getNome() %></div>
@@ -37,7 +37,7 @@ pageEncoding="ISO-8859-1"%>
                     <div>
                         <a href="carrello?action=add&id=<%=pb.getId()%>&redirect=carrello" class="buyButton">
                             <span>ACQUISTA</span>
-                            <img src="assets/icons/addToCart.svg" />
+                            <img src="assets/icons/addToCart.svg" alt="Aggiungi al Carrello"/>
                         </a>
                         <p>Restanti: <%=pb.getQuantita() %></p>
                     </div>
