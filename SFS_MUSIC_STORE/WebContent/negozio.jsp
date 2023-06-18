@@ -42,7 +42,6 @@ if(pageNum_str == null)
 	pageNum = 1;
 else
 	pageNum = Integer.parseInt(pageNum_str);
-
 List<ProductBean> pbs = (List<ProductBean>) request.getAttribute("products");
 if (pbs == null) {
 	String query = "?c=" + Encode.forHtml(f_condizioni) + "&min_price=" + Encode.forHtml(f_prezzo_min) + "&max_price=" + Encode.forHtml(f_prezzo_max) + "&ordina=" + Encode.forHtml(ordina)+ "&page=" + pageNum;
@@ -91,8 +90,6 @@ if (f_cat != null)
 						</div>
 					</div>
 				</div>
-
-
 				<div class="filtro">
 					<p class="filtro-title">Categorie</p>
 					<div class="filtro-content">
@@ -135,7 +132,6 @@ if (f_cat != null)
 						</div>
 					</div>
 				</div>
-
 				<div class="filtro">
 					<p class="filtro-title">Prezzo</p>
 					<div class="filtro-content">
@@ -149,8 +145,7 @@ if (f_cat != null)
 								value="<%=Encode.forHtml(f_prezzo_max) %>" /> <span>&euro;</span>
 						</div>
 					</div>
-				</div>
-				
+				</div>		
 				<div class="filtro">
 					<p class="filtro-title">Ordina</p>
 					<div class="filtro-content">
@@ -167,7 +162,6 @@ if (f_cat != null)
 				<button type="submit">APPLICA</button>
 			</form>
 		</div>
-
 		<div class="risultati">
 			<div class="risultati-header">
 				<!-- <h2>Risultati</h2>  -->
@@ -201,7 +195,6 @@ if (f_cat != null)
 							stroke="black" stroke-width="2" stroke-linecap="round"
 							stroke-linejoin="round" />
             </svg>				</div>
-
 			</div>
 			<div class="risultati-content">
 				<%
@@ -234,7 +227,6 @@ if (f_cat != null)
 				              </svg>
 							<p>Warehouse</p>
 						</div>
-
 						<div class="prodotto-title"><%=pb.getNome()%></div>
 						<div class="prezzo-prodotto">
 							<span><%=pb.getPrezzo()%>&euro;</span> <a
@@ -261,11 +253,8 @@ if (f_cat != null)
 				<div class="next-page">
 					<a href="negozio<%=query %>&page=<%=pageNum+1 %>"  <%=pbs.size()<30?"data-disabled=true":"" %> >Pagina successiva</a>
 				</div>
-				
 			</div>
-			
 		</div>
-		
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
 </body>
