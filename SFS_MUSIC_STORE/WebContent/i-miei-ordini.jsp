@@ -1,11 +1,12 @@
 <%@page import="beans.ProductBean"%>
+<%@page import="beans.OrderBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%
-List<ProductBean> pbs = (List<ProductBean>) request.getAttribute("ordini");
-if (pbs == null) {
+List<OrderBean> obs = (List<OrderBean>) request.getAttribute("ordini");
+if (obs == null) {
 	response.sendRedirect("i-miei-ordini");
 	return;
 }
@@ -18,7 +19,7 @@ if (pbs == null) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SFS Music Store - I Miei Ordini</title>
 <link href="assets/styles/i-miei-ordini.css" rel="stylesheet" />
-<link href="assets/styles/fonts.css" rel="styleheet" />
+<link href="assets/styles/fonts.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -28,27 +29,32 @@ if (pbs == null) {
 		<h1>I miei ordini</h1>
 		<div class="items-wrapper">
 					<%
-					if (pbs != null)
-						for (ProductBean pb : pbs) {
+					if (obs != null)
+						for (OrderBean ob : obs) {
 					%>
-					<div class="card-prodotto">
-						<div class="image-prodotto">
-							<a class="link-img-prodotto"
-								href="pagina-prodotto?id=<%=pb.getId()%>"> <img
-								src="getImage?id=<%=pb.getId()%>" alt="immagine" />
-							</a>
-						</div>
-						<div class="info-prodotto">
-							<div class="prodotto-title"><%=pb.getNome()%></div>
-							<div class="prezzo-prodotto">
-								<span><%=pb.getPrezzo()%>&euro;</span>
-								<span>| x<%=pb.getQuantita()%></span>
+						<div class="ordine">
+							<p>ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %></p>
+							<div class="ordini">
+								<% for (ProductBean pb : ob.getPb()) { %>
+								<div class="card-prodotto">
+									<div class="image-prodotto">
+										<a class="link-img-prodotto"
+											href="pagina-prodotto?id=<%=pb.getId()%>"> <img
+											src="getImage?id=<%=pb.getId()%>" alt="immagine" />
+										</a>
+									</div>
+									<div class="info-prodotto">
+										<div class="prodotto-title"><%=pb.getNome()%></div>
+										<div class="prezzo-prodotto">
+											<span><%=pb.getPrezzo()%>&euro;</span>
+											<span>| x<%=pb.getQuantita()%></span>
+										</div>
+									</div>
+								</div>
+								<% } %>
 							</div>
 						</div>
-					</div>
-					<%
-					}
-					%>
+					<% } %>
 		</div>	
 	</section>
 

@@ -1,52 +1,55 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class OrderBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private ProductBean pb;
+	private List<ProductBean> pb;
 	private String data;
 	private String indirizzo;
-	private int id_utente;
+	private int idUtente;
+	private int idOrdine;
 	
-	public OrderBean(ProductBean pb, String data, String indirizzo, int id_utente) {
+	public OrderBean(List<ProductBean> pb, String data, String indirizzo, int idUtente, int idOrdine) {
+		super();
 		this.pb = pb;
 		this.data = data;
 		this.indirizzo = indirizzo;
-		this.id_utente=id_utente;
+		this.idUtente = idUtente;
+		this.idOrdine = idOrdine;
 	}
-
-	public ProductBean getPb() {
+	
+	public List<ProductBean> getPb() {
 		return pb;
 	}
-
-	public void setPb(ProductBean pb) {
+	public void setPb(List<ProductBean> pb) {
 		this.pb = pb;
 	}
-
 	public String getData() {
 		return data;
 	}
-
 	public void setData(String data) {
 		this.data = data;
 	}
-
 	public String getIndirizzo() {
 		return indirizzo;
 	}
-
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-	
 	public int getIdUtente() {
-		return id_utente;
+		return idUtente;
 	}
-
-	public void setIdUtente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
+	}
+	public int getIdOrdine() {
+		return idOrdine;
+	}
+	public void setIdOrdine(int idOrdine) {
+		this.idOrdine = idOrdine;
 	}
 
 }

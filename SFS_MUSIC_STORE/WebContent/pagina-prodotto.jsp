@@ -7,10 +7,12 @@ pageEncoding="ISO-8859-1"%>
 		return;
 	}
 	ProductBean pb = (ProductBean) request.getAttribute("product");
-	if(pb == null){
-		response.sendRedirect("pagina-prodotto?id="+request.getParameter("id"));
-		return;
-	}
+	
+	if(request.getAttribute("error") != null && !request.getAttribute("error").equals("not found"))
+		if(pb == null){
+			response.sendRedirect("pagina-prodotto?id="+request.getParameter("id"));
+			return;
+		}
 %>
 <!DOCTYPE html>
 
@@ -20,29 +22,35 @@ pageEncoding="ISO-8859-1"%>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SFS Music Store - Prodotto</title>
         <link href="assets/styles/pagina-prodotto.css" rel="stylesheet" />
-        <link href="assets/styles/fonts.css" rel="styleheet" />
+        <link href="assets/styles/fonts.css" rel="stylesheet" />
     </head>
     <body>
         <jsp:include page="./includes/header.jsp"></jsp:include>
         <section>
-            <div class="global">
-                <div class="imageBox">
-                    <img src="getImage?id=<%=pb.getId() %>" alt="Immagine del prodotto"/>
-                </div>
-                <div class="infoBox">
-                    <div class="basicText"><%=pb.getNome() %></div>
-                    <div class="info">
-                        <%=pb.getDescrizione() %>
-                    </div>
-                    <div>
-                        <a href="carrello?action=add&id=<%=pb.getId()%>&redirect=carrello" class="buyButton">
-                            <span>ACQUISTA</span>
-                            <img src="assets/icons/addToCart.svg" alt="Aggiungi al Carrello"/>
-                        </a>
-                        <p>Restanti: <%=pb.getQuantita() %></p>
-                    </div>
-                </div>
-            </div>
+	        <% if(pb != null) { %>
+	            <div class="global">
+	                <div class="imageBox">
+	                    <img src="getImage?id=<%=pb.getId() %>" alt="Immagine del prodotto"/>
+	                </div>
+	                <div class="infoBox">
+	                    <div class="basicText"><%=pb.getNome() %></div>
+	                    <div class="info">
+	                        <%=pb.getDescrizione() %>
+	                    </div>
+	                    <div>
+	                        <a href="carrello?action=add&id=<%=pb.getId()%>&redirect=carrello" class="buyButton">
+	                            <span>ACQUISTA</span>
+	                            <img src="assets/icons/addToCart.svg" alt="Aggiungi al Carrello"/>
+	                        </a>
+	                        <p>Restanti: <%=pb.getQuantita() %></p>
+	                    </div>
+	                </div>
+	            </div>
+	         <% } else {%>
+	         	<div class="global">
+	         		<h1>ITEM NOT FOUND</h1>
+	         	</div>
+	         <% } %>
         </section>
         
         <jsp:include page="./includes/footer.jsp"></jsp:include>

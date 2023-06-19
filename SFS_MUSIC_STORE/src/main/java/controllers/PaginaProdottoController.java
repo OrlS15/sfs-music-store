@@ -32,7 +32,11 @@ public class PaginaProdottoController extends HttpServlet {
 		ProductDao productDao = new ProductDao((DataSource) getServletContext().getAttribute("DataSource"));
 		try {
 			ProductBean pb = productDao.getProductById(id);
+			if(pb==null) {
+				request.setAttribute("error", "not found");
+			}
 			request.setAttribute("product", pb);
+			
 			request.getRequestDispatcher("pagina-prodotto.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

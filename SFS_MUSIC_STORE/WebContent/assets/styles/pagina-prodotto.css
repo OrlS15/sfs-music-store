@@ -37,7 +37,7 @@ section {
 	align-items: center;
 }
 
-p {
+.infoBox p {
 	color: white;
 	font-weight: bold;
 }

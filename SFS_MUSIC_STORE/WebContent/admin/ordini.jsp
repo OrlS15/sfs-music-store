@@ -19,40 +19,42 @@ if (obs == null) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SFS Music Store - Ordini</title>
 <link href="../assets/styles/i-miei-ordini.css" rel="stylesheet" />
-<link href="../assets/styles/fonts.css" rel="styleheet" />
+<link href="../assets/styles/fonts.css" rel="stylesheet" />
 </head>
 <body>
 
 	<jsp:include page="/includes/header.jsp"></jsp:include>
 
 	<section>
-		<h1>I miei ordini</h1>
+		<h1>ORDINIs</h1>
 		<div class="items-wrapper">
 					<%
 					if (obs != null)
 						for (OrderBean ob : obs) {
 					%>
-					<div class="card-prodotto">
-						<div class="image-prodotto">
-							<a class="link-img-prodotto"
-								href="pagina-prodotto?id=<%=ob.getPb().getId()%>"> <img
-								src="${pageContext.request.contextPath}/getImage?id=<%=ob.getPb().getId()%>" alt="immagine" />
-							</a>
-						</div>
-						<div class="info-prodotto">
-							<div class="prodotto-title"><%=ob.getPb().getNome()%></div>
-							<span class="data-indirizzo"><%=ob.getData()%></span>
-							<span class="data-indirizzo"><%=ob.getIndirizzo()%></span>
-							<span class="data-indirizzo">Codice Utente: <%=ob.getIdUtente()%></span>
-							<div class="prezzo-prodotto">
-								<span><%=ob.getPb().getPrezzo()%>&euro;</span>
-								<span>| x<%=ob.getPb().getQuantita()%></span>
+						<div class="ordine">
+							<p>ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %> | UTENTE: <%=ob.getIdUtente() %></p>
+							<div class="ordini">
+								<% for (ProductBean pb : ob.getPb()) { %>
+								<div class="card-prodotto">
+									<div class="image-prodotto">
+										<a class="link-img-prodotto"
+											href="../pagina-prodotto?id=<%=pb.getId()%>"> <img
+											src="../getImage?id=<%=pb.getId()%>" alt="immagine" />
+										</a>
+									</div>
+									<div class="info-prodotto">
+										<div class="prodotto-title"><%=pb.getNome()%></div>
+										<div class="prezzo-prodotto">
+											<span><%=pb.getPrezzo()%>&euro;</span>
+											<span>| x<%=pb.getQuantita()%></span>
+										</div>
+									</div>
+								</div>
+								<% } %>
 							</div>
 						</div>
-					</div>
-					<%
-					}
-					%>
+					<% } %>
 		</div>	
 	</section>
 

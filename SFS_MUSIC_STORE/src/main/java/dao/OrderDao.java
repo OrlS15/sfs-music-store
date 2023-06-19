@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -92,35 +92,47 @@ public class OrderDao implements IOrderDao{
 	}
 
 	@Override
-	public List<ProductBean> getOrdersFromUser(int id_utente) throws SQLException {
+	public List<OrderBean> getOrdersFromUser(int id_utente) throws SQLException {
 		Connection c = null;
 		PreparedStatement p = null;
 		
-		List<ProductBean> pbs = new ArrayList<>();
-
-		ProductBean pb = null;
-
+		List<OrderBean> ordini = new ArrayList<>();
+		
 		String query = 
-				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine FROM ORDER_ITEM as oi"
+				"SELECT id_ordine, id_utente, id_info_prodotto, quantita, prezzo, data, indirizzo, ip.nome, descrizione, tipo"
+				+ "	FROM ORDER_ITEM as oi"
 				+ " INNER JOIN ORDINE as o ON o.id = oi.id_ordine"
 				+ " INNER JOIN UTENTE as u ON o.id_utente = u.id"
 				+ " INNER JOIN INFO_PRODOTTO as ip ON ip.id = oi.id_info_prodotto"
-				+ " WHERE id_utente = ?";
+				+ "	WHERE id_utente = ?"
+				+ "	ORDER BY data desc";
 		try {
 			c = ds.getConnection();
 			p = c.prepareStatement(query);
 			p.setInt(1, id_utente);
+
 			ResultSet rs = p.executeQuery();
 			while (rs.next()) {
-				pb = new ProductBean();
-				pb.setId(Integer.parseInt(rs.getString("id_info_prodotto")));
-				pb.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
-				pb.setQuantita(Integer.parseInt(rs.getString("quantita")));
+				ProductBean pb = new ProductBean();
+				pb.setId(rs.getInt("id_info_prodotto"));
+				pb.setPrezzo(rs.getInt("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
 				pb.setNome(rs.getString("nome"));
 				pb.setDescrizione(rs.getString("descrizione"));
 				pb.setTipo(rs.getString("tipo"));
-				pbs.add(pb);
+				
+				int curr_id_ordine = rs.getInt("id_ordine");
+				int curr_id_utente = rs.getInt("id_utente");
+				OrderBean ob = ordini.stream().filter((e) -> e.getIdOrdine() == curr_id_ordine).findFirst().orElse(null);
+				if (ob == null) {
+					List<ProductBean> pbs = new ArrayList<>();
+					pbs.add(pb);
+					ordini.add(new OrderBean(pbs, rs.getString("data"), rs.getString("indirizzo"), curr_id_utente, curr_id_ordine));
+				} else {
+					ob.getPb().add(pb);
+				}
 			}
+
 		} finally {
 			try {
 				if (p != null)
@@ -130,7 +142,7 @@ public class OrderDao implements IOrderDao{
 					c.close();
 			}
 		}
-		return pbs;
+		return ordini;
 	}
 	
 	@Override
@@ -138,31 +150,41 @@ public class OrderDao implements IOrderDao{
 		Connection c = null;
 		PreparedStatement p = null;
 		
-		List<OrderBean> obs = new ArrayList<>();
-		
-		ProductBean pb = null;
+		List<OrderBean> ordini = new ArrayList<>();
 		
 		String query = 
-				"SELECT quantita, prezzo, id_info_prodotto, ip.nome, ip.descrizione, ip.tipo, id_ordine, data, indirizzo, id_utente FROM ORDER_ITEM as oi"
-						+ " INNER JOIN ORDINE as o ON o.id = oi.id_ordine"
-						+ " INNER JOIN UTENTE as u ON o.id_utente = u.id"
-						+ " INNER JOIN INFO_PRODOTTO as ip ON ip.id = oi.id_info_prodotto";
+				"SELECT id_ordine, id_utente, id_info_prodotto, quantita, prezzo, data, indirizzo, ip.nome, descrizione, tipo"
+				+ "	FROM ORDER_ITEM as oi"
+				+ " INNER JOIN ORDINE as o ON o.id = oi.id_ordine"
+				+ " INNER JOIN UTENTE as u ON o.id_utente = u.id"
+				+ " INNER JOIN INFO_PRODOTTO as ip ON ip.id = oi.id_info_prodotto"
+				+ "	ORDER BY data desc";
 		try {
 			c = ds.getConnection();
 			p = c.prepareStatement(query);
 
 			ResultSet rs = p.executeQuery();
 			while (rs.next()) {
-				pb = new ProductBean();
-				pb.setId(Integer.parseInt(rs.getString("id_info_prodotto")));
-				pb.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
-				pb.setQuantita(Integer.parseInt(rs.getString("quantita")));
+				ProductBean pb = new ProductBean();
+				pb.setId(rs.getInt("id_info_prodotto"));
+				pb.setPrezzo(rs.getInt("prezzo"));
+				pb.setQuantita(rs.getInt("quantita"));
 				pb.setNome(rs.getString("nome"));
 				pb.setDescrizione(rs.getString("descrizione"));
 				pb.setTipo(rs.getString("tipo"));
-				OrderBean ob = new OrderBean(pb, rs.getString("data"), rs.getString("indirizzo"), rs.getInt("id_utente"));
-				obs.add(ob);
+				
+				int curr_id_ordine = rs.getInt("id_ordine");
+				int curr_id_utente = rs.getInt("id_utente");
+				OrderBean ob = ordini.stream().filter((e) -> e.getIdOrdine() == curr_id_ordine).findFirst().orElse(null);
+				if (ob == null) {
+					List<ProductBean> pbs = new ArrayList<>();
+					pbs.add(pb);
+					ordini.add(new OrderBean(pbs, rs.getString("data"), rs.getString("indirizzo"), curr_id_utente, curr_id_ordine));
+				} else {
+					ob.getPb().add(pb);
+				}
 			}
+
 		} finally {
 			try {
 				if (p != null)
@@ -172,7 +194,7 @@ public class OrderDao implements IOrderDao{
 					c.close();
 			}
 		}
-		return obs;
+		return ordini;
 	}
 
 }

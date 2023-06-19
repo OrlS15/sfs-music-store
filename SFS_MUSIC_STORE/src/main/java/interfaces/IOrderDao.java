@@ -12,7 +12,7 @@ public interface IOrderDao {
 
 	public void effettuaOrdine(List<CartItem> cis, int id_utente, String indirizzo) throws SQLException;
 
-	public List<ProductBean> getOrdersFromUser(int id_utente)throws SQLException;
+	public List<OrderBean> getOrdersFromUser(int id_utente)throws SQLException;
 	
 	public List<OrderBean> getAllOrders()throws SQLException;
 }
