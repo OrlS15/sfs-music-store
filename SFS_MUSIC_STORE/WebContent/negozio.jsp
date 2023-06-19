@@ -123,7 +123,7 @@ if (f_cat != null)
 							<input type="checkbox" id="categoria_batterie" name="cat"
 								value="batteria"
 								<%=f_categorie.contains("batteria") ? "checked" : ""%> /> <label
-								for="categoria_battierie">Batterie</label>
+								for="categoria_batterie">Batterie</label>
 						</div>
 						<div>
 							<input type="checkbox" id="categoria_fiati" name="cat"
