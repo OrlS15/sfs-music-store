@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <link rel="stylesheet"
@@ -9,7 +11,7 @@
 	<footer>
 		<div class="footer-row">
 			<p class="footer-row-title">CHI SIAMO</p>
-			<p class="footer-row-description">Negli oltre 30 anni di
+			<p class="footer-row-description">Negli oltre 40 anni di
 				attività  SFS Store è cresciuta fino a diventare uno dei centri più
 				all'avanguardia del mercato italiano, al punto che nell'ottobre 2011
 				il punto vendita viene trasferito nuovamente, questa volta in via Le
@@ -19,9 +21,9 @@
 			<p class="footer-row-title">CONTATTACI</p>
 			<p class="footer-row-description">
 				SFS Music Store srl<br /> <br /> P.IVA 1234567890<br /> <br />
-				Via Le Mani Dal Naso, 3 - Fisciano<br /> <br /> Tel: +39 393
+				Via La Mano Dal Naso, 3 - Fisciano<br /> <br /> Tel: +39 393
 				9393939<br /> <br /> Fax: nel 2023?<br /> <br /> Email:
-				info@sfsmusicstore.it
+				infos@sfsmusicstore.it
 			</p>
 		</div>
 		<div class="footer-row">
@@ -38,3 +40,4 @@
 	</footer>
 </body>
 </html>
+
