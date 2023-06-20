@@ -83,9 +83,11 @@ public class OrderDao implements IOrderDao{
 		} finally {
 			try {
 				if (p != null)
+					
 					p.close();
 			} finally {
 				if (c != null)
+					
 					c.close();
 			}
 		}		
@@ -94,6 +96,7 @@ public class OrderDao implements IOrderDao{
 	@Override
 	public List<OrderBean> getOrdersFromUser(int id_utente) throws SQLException {
 		Connection c = null;
+		
 		PreparedStatement p = null;
 		
 		List<OrderBean> ordini = new ArrayList<>();
@@ -126,7 +129,9 @@ public class OrderDao implements IOrderDao{
 				OrderBean ob = ordini.stream().filter((e) -> e.getIdOrdine() == curr_id_ordine).findFirst().orElse(null);
 				if (ob == null) {
 					List<ProductBean> pbs = new ArrayList<>();
+					
 					pbs.add(pb);
+					
 					ordini.add(new OrderBean(pbs, rs.getString("data"), rs.getString("indirizzo"), curr_id_utente, curr_id_ordine));
 				} else {
 					ob.getPb().add(pb);
@@ -162,7 +167,11 @@ public class OrderDao implements IOrderDao{
 		try {
 			c = ds.getConnection();
 			p = c.prepareStatement(query);
-
+			
+			
+			System.out.print(p);
+			
+			
 			ResultSet rs = p.executeQuery();
 			while (rs.next()) {
 				ProductBean pb = new ProductBean();
@@ -194,6 +203,9 @@ public class OrderDao implements IOrderDao{
 					c.close();
 			}
 		}
+		
+		System.out.println(ordini);
+		
 		return ordini;
 	}
 
