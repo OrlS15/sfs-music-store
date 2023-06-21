@@ -26,14 +26,14 @@ if (obs == null) {
 	<jsp:include page="/includes/header.jsp"></jsp:include>
 
 	<section>
-		<h1>ORDINIs</h1>
+		<h1>ORDINI</h1>
 		<div class="items-wrapper">
 					<%
 					if (obs != null)
 						for (OrderBean ob : obs) {
 					%>
 						<div class="ordine">
-							<p>ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %> | UTENTE: <%=ob.getIdUtente() %></p>
+							<p>NUM ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %> | UTENTE: <%=ob.getIdUtente() %></p>
 							<div class="ordini">
 								<% for (ProductBean pb : ob.getPb()) { %>
 								<div class="card-prodotto">
