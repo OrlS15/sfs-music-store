@@ -44,7 +44,6 @@
 	        <label for="descrizione">Descrizione</label>
 	        <textarea name="descrizione" id="descrizione" cols="100" required></textarea>
 	      </div>
-	
 	      <div class="input-wrapper-col">
 	        <div class="input-wrapper">
 	          <label for="tipo">Tipo:</label>
@@ -67,10 +66,8 @@
 	        <label for="immagine">Immagine</label>
 	        <input type="file" id="immagine" name="immagine" required />
 	      </div>
-	
 	      <input type="submit" value="VENDI" />
 	    </form>
-	
 	    <div class="prodotti-wrapper">
 	      <h3>Le mie vendite</h3>
 	      <div class="prodotti-container">
@@ -125,8 +122,7 @@
 	              </div>
 	            </div>
 	          </div>
-	        <% } %>
-	       
+	        <% } %>  
 	      </div>
 	    </div>
 	</section>

@@ -10,12 +10,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/styles/index.css" />
 
 <script src="${pageContext.request.contextPath}/assets/js/index.js" defer></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
 <title>SFS Music Store</title>
 </head>
-
 <body>
 	<jsp:include page="./includes/header.jsp"></jsp:include>
 	<section class="hero">
@@ -23,7 +20,6 @@
 			<div class="hero-spectrum">
 				<img src="${pageContext.request.contextPath}/assets/images/spectrum.gif" alt="spectrum" />
 			</div>
-
 			<div class="hero-middle">
 				<h1>
 					È ora di farti <span style="position: relative">sentire<span
@@ -66,8 +62,7 @@
 			</div>
 
 			<div class="hero-last"></div>
-		</div>
-		
+		</div>	
 		<a href="#categorie">
 			<div class="shop-now">
 				<span>SHOP NOW</span>
@@ -139,7 +134,6 @@
 				</div>
 				<span class="span-divider"></span>
 			</div>
-
 			<div class="brands-wrapper">
 				<img src="${pageContext.request.contextPath}/assets/images/brands/fender.png" alt="fender" />
 				<img src="${pageContext.request.contextPath}/assets/images/brands/ibanez.png" alt="ibanez" />
@@ -153,5 +147,4 @@
 	</section>
 	<jsp:include page="./includes/footer.jsp"></jsp:include>
 </body>
-
 </html>
