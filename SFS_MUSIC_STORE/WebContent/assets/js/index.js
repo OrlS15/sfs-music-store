@@ -42,7 +42,7 @@ $(document).ready(() => {
 						let li = document.createElement("li");
 						li.textContent = d.nome;
 						li.onclick = function () { 
-							window.location = location.pathname + "/pagina-prodotto?id=" + d.id 
+							window.location.replace("pagina-prodotto?id=" + d.id);
 						};
 						ul.append(li);
 					})

@@ -33,7 +33,7 @@ if (obs == null) {
 						for (OrderBean ob : obs) {
 					%>
 						<div class="ordine">
-							<p>NUM ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %> | UTENTE: <%=ob.getIdUtente() %></p>
+							<p>NUM ORDINE <%=ob.getIdOrdine() %> | <%=ob.getData() %> | <%=ob.getIndirizzo() %> | UTENTE: <%=ob.getIdUtente() %></p>
 							<div class="ordini">
 								<% for (ProductBean pb : ob.getPb()) { %>
 								<div class="card-prodotto">
