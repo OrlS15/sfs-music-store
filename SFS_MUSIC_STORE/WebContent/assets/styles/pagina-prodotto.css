@@ -58,7 +58,7 @@ section {
 
 .imageBox img {
 
-	width: 200px;
+	width: 350px;
 }
 
 .sellProduct {
@@ -106,5 +106,8 @@ section {
 	.global{
 		padding-top: 100px;
 		flex-direction: column;
+	}
+	.imageBox img {
+		width: 80%;
 	}
 }
