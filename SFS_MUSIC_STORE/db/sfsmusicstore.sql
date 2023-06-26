@@ -28,7 +28,7 @@ create table ORDINE(
 
 create table INFO_PRODOTTO(
 	id int auto_increment NOT NULL,
-    nome varchar(50) NOT NULL,
+    nome varchar(150) NOT NULL,
     descrizione text NOT NULL,
     tipo varchar(50) NOT NULL,
     immagine mediumblob NOT NULL,
